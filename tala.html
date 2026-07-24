@@ -1,0 +1,1072 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>طلای دیجی کالا</title>
+  <link rel="icon" type="image/x-icon" href="./digikala-logo-en.png">
+
+  <style>
+    @font-face {
+  font-family: 'Shabnam';
+  src: url('Shabnam.woff2') format('woff2'),
+       url('Shabnam.woff') format('woff');
+}
+
+    @import url('https://v1.fontapi.ir/css/Shabnam');
+    body {
+      margin: 0;
+      font-family: 'Shabnam', sans-serif;
+      background-color: #ffffff;
+      overflow-x: hidden;
+    }
+.gold-header {
+  direction: rtl;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 40px;
+  background: #fff;
+  border-bottom: 1px solid #eee;
+  font-family: 'Shabnam', sans-serif;
+
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+}
+
+/* سمت راست */
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.logo-bold {
+  font-size: 20px;
+  font-weight: bold;
+  color: #3f3e3e;
+}
+
+.logo-light {
+  font-size: 20px;
+  font-weight: 400;
+  color: #555;
+}
+
+/* وسط */
+.header-center {
+  display: flex;
+  gap: 28px;
+}
+
+.header-center a {
+  text-decoration: none;
+  color: #333;
+  font-size: 15px;
+}
+
+
+/* دکمه خرید */
+.buy-btn {
+  display: inline-block;
+  background: #fff;          /* بک‌گراند سفید */
+  color: #4b4a4a;
+  padding: 10px 20px;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 400;
+  border: 1px solid #000;    /* دور مستطیل مشکی */
+  border-radius: 9px;          /* مستطیلی، بدون گردی */
+}
+
+
+/* هدر موبایل – همه عناصر در یک ردیف */
+@media screen and (max-width: 768px) {
+  .gold-header {
+    flex-direction: row;        /* حفظ ردیف */
+    align-items: center;        /* وسط چین عمودی */
+    justify-content: space-between;
+    padding: 8px 16px;          /* کاهش padding */
+    gap: 8px;
+  }
+
+  /* لوگو */
+  .logo-bold, .logo-light {
+    font-size: 16px;           /* کوچکتر */
+  }
+
+  /* بخش وسط هدر (لینک‌ها) */
+  .header-center {
+    flex-direction: row;       /* افقی */
+    gap: 12px;                 /* فاصله کمتر */
+    
+  }
+
+  .header-center a {
+    font-size: 13px;           /* کوچکتر */
+  }
+
+  /* بخش راست هدر */
+  .header-right {
+    
+    gap: 6px;                  /* فاصله کمی بین آیتم‌ها */
+  }
+.heade
+  /* دکمه خرید */
+  .buy-btn {
+    
+    font-size: 12px;           /* کوچکتر */
+    padding: 6px 12px;         /* کمتر */
+    min-width: 80px;           /* جلوگیری از خیلی کوچک شدن */
+  }
+}
+
+
+
+
+.dk-footer {
+background:#ffffff;
+padding:50px;
+direction:rtl;
+font-family:inherit;
+}
+.dk-top {
+display:flex;
+justify-content:space-between;
+text-align:center;
+margin-bottom:40px;
+}
+.dk-item {
+width:19%;
+}
+.dk-item p {margin-top:10px;font-size:12px;}
+.dk-icon {width:50px;}
+
+
+.dk-middle {
+display:flex;
+justify-content:space-between;
+margin-bottom:40px;
+}
+.dk-col {width:30%;}
+.dk-col h4 {margin-bottom:15px;font-size:18px;}
+.dk-col a {
+display:block;
+color:#333;
+margin-bottom:8px;
+font-size:14px;
+text-decoration:none;
+}
+
+
+.dk-social-wrap {text-align:center; margin-top:30px;}
+.dk-social a img {width:30px;margin:0 10px;}
+
+
+.dk-newsletter {margin-top:20px;}
+.dk-newsletter input {
+padding:10px;
+width:200px;
+border:1px solid #ccc;
+border-radius:5px;
+}
+.dk-newsletter button {
+padding:10px 20px;
+border:none;
+background:#ccc;
+border-radius:5px;
+cursor:pointer;
+}
+
+
+/* والد لوگو و متن – کاملاً راست‌چین و ستونی */
+.dk-right {
+    display: flex;
+    flex-direction: column;   /* متن زیر لوگو */
+    align-items: flex-end;    /* راست‌چین کامل */
+    text-align: right;        /* متن راست‌چین */
+    width: fit-content;
+    gap: 6px;
+}
+
+/* لوگو – راست‌چین واقعی */
+.dk-logo {
+    height: 45px;
+    display: block;
+    margin-left: auto;   /* ⭐ برای flex اصلی‌ترین روش راست‌چین */
+}
+
+/* متن‌ها زیر لوگو و کامل راست‌چین */
+.dk-info {
+    display: flex;
+    flex-direction: column;   /* ⭐ ستون شدن متن */
+    align-items: flex-end;    /* متن راست‌چین */
+    text-align: right;  
+    gap: 4px;
+    font-size: 14px;
+    color: #444;
+}
+
+.dk-footer-copy {
+    text-align: center;
+    width: 100%;
+    padding: 20px 0;
+    font-size: 13px;
+    color: #444;
+    direction: rtl;
+}
+
+
+.photo-strip {
+    width: 100%;
+    height: 120px;          /* ارتفاع نوار – هرچی خواستی بزن */
+    overflow: hidden;       /* اگر عکس بزرگ بود، برش می‌خورد */
+    margin: 20px 0;         /* فاصله از بالا و پایین */
+    border-radius: 8px;     /* اختیاری: گوشه‌های گرد */
+}
+
+.photo-strip img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;      /* عکس به طور زیبا داخل نوار قرار می‌گیرد */
+    display: block;
+}
+
+
+
+    /* ✅ اسلایدر */
+    .slider {
+      position: relative;
+      width: 100%;
+      height: 40vh;
+      overflow: hidden;
+      margin-top: 10px;
+      background: #000;
+    }
+    .slide {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+    }
+    .slide.active { opacity: 1; z-index: 1; }
+
+    .slider-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255,255,255,0.7);
+      border: none;
+      cursor: pointer;
+      font-size: 1.5rem;
+      padding: 8px 14px;
+      border-radius: 50%;
+      transition: background 0.2s;
+      z-index: 2;
+    }
+    .slider-btn:hover { background: rgba(255,255,255,0.9); }
+    .prev { right: 20px; }
+    .next { left: 20px; }
+
+    .dots {
+      position: absolute;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 8px;
+      z-index: 3;
+    }
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.5);
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .dot.active { background: #fff; }
+
+/* 📱 ریسپانسیو موبایل */
+@media (max-width: 768px) {
+  .slider {
+    height: 100px; /* ارتفاع کمتر برای موبایل */
+    margin-top: 5px;
+    
+    max-width: 100%;
+    height: auto;
+
+  }
+
+  .slider-btn {
+    font-size: 1.2rem;
+    padding: 6px 10px;
+  }
+
+  .prev { right: 10px; }
+  .next { left: 10px; }
+}
+
+/* 📱📱 موبایل‌های خیلی کوچک */
+@media (max-width: 480px) {
+  .slider {
+    height: 25vh;
+  }
+
+  .slider-btn {
+    font-size: 1rem;
+    padding: 5px 8px;
+  }
+}
+
+
+.digital-gold-card {
+  display: flex;
+  direction: rtl;
+  align-items: center;
+  background: #fff;
+  padding: 24px 40px; /* فاصله از چپ و راست */
+  gap: 24px;
+  border-radius:9px;   /* مستطیلی */
+  border: none;       /* بدون لبه */
+  font-family: 'Shabnam', sans-serif;
+  .cards-container {
+  padding: 12px 140px;   /* فاصله از چپ و راست */
+    
+}
+
+}
+
+.digital-gold-text {
+  flex: 1;
+    padding: 12px 150px;   /* فاصله از چپ و راست */
+
+}
+
+.digital-gold-text h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
+  color: #111;
+}
+
+.digital-gold-text p {
+  font-size: 14px;
+  margin-bottom: 16px;
+  color: #555;
+  line-height: 1.6;
+}
+
+.buy-btn {
+  display: inline-block;
+  background: #e7c606; /* طلایی */
+  color: #fff;
+  padding: 10px 20px;
+  text-decoration: none;
+  font-size: 14px;
+  border: none;
+  border-radius: 9px;  /* مستطیلی */
+  cursor: pointer;
+}
+
+.digital-gold-image {
+  flex: 0 0 390px;   /* اندازه استاندارد عکس */
+    padding: 12px 150px;   /* فاصله از چپ و راست */
+
+}
+
+.digital-gold-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border: none;
+  border-radius: 0;
+}
+
+.cards-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+      padding: 20px 180px;   /* فاصله زیاد از چپ و راست */
+
+  font-family: 'Shabnam', sans-serif;
+}
+
+.gold-card {
+  background: #f3f3f3;
+    padding: 0 110px;   /* این */
+
+  padding: 30px;
+  border-radius:9px;   /* مستطیلی */
+  border: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+.gold-card h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+  color: #494747;
+}
+
+.gold-card p {
+  font-size: 14px;
+  margin-bottom: 16px;
+  color: #555;
+  line-height: 1.6;
+}
+
+.buy-btn {
+  display: inline-block;
+  background: #D4AF37;
+  color: #fff;
+  padding: 10px 20px;
+  text-decoration: none;
+  font-size: 14px;
+  border: none;
+  border-radius: 9px;
+  cursor: pointer;
+}
+
+@media (max-width: 1024px) {
+  .cards-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .cards-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* ریسپانسیو برای تبلت */
+@media (max-width: 1024px) {
+  .cards-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .digital-gold-card {
+    flex-direction: column; /* تصویر و متن زیر هم */
+    align-items: flex-start;
+    padding: 20px;
+    gap: 16px;
+  }
+
+  .digital-gold-image {
+    flex: 1 1 100%;
+  }
+}
+
+/* ریسپانسیو برای موبایل */
+@media (max-width: 768px) {
+  .cards-container {
+    grid-template-columns: 1fr;
+  }
+  
+  .digital-gold-card {
+    padding: 16px 16px;
+    gap: 12px;
+  }
+
+  .digital-gold-text h3 {
+    font-size: 18px;
+  }
+
+  .digital-gold-text p {
+    font-size: 13px;
+  }
+
+  .buy-btn {
+    width: 100%; /* دکمه تمام عرض */
+    text-align: center;
+    padding: 10px 0;
+    font-size: 13px;
+  }
+
+  .digital-gold-image {
+    flex: 1 1 100%;
+  }
+}
+
+.faq-section {
+  font-family: 'Shabnam', sans-serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.faq-section h2 {
+  font-weight: bold;
+  color: #111;
+  font-size: 24px;
+  margin-bottom: 24px;
+}
+
+.faq-item {
+  border-bottom: 1px solid #ddd;
+  padding: 12px 0;
+}
+
+.faq-title {
+  font-weight: bold;
+  color: #111;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.faq-title .triangle {
+  display: inline-block;
+  transition: transform 0.3s;
+}
+
+.faq-content {
+  display: none;
+  color: #555;
+  margin-top: 8px;
+  line-height: 1.6;
+}
+
+.gold-header {
+  direction: rtl;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 180px;   /* ⬅ فاصله زیاد از چپ و راست */
+  background: #fff;
+  border-bottom: 1px solid #eee;
+  font-family: 'Shabnam', sans-serif;
+}
+
+
+
+
+    /* ✅ اسلایدر */
+    .slider {
+  position: relative;
+  width: 100%;
+  height: 380px;
+  overflow: hidden;
+    }
+      .slide {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transition: opacity .7s ease-in-out;
+    }
+    .slide.active { opacity: 1; z-index: 1; }
+
+    .slider-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255,255,255,0.7);
+      border: none;
+      cursor: pointer;
+      font-size: 1.5rem;
+      padding: 8px 14px;
+      border-radius: 50%;
+      transition: background 0.2s;
+      z-index: 2;
+    }
+    .slider-btn:hover { background: rgba(255,255,255,0.9); }
+    .prev { right: 20px; }
+    .next { left: 20px; }
+
+    .dots {
+      position: absolute;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 8px;
+      z-index: 3;
+    }
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.5);
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .dot.active { background: #fff; }
+
+.ei{
+  margin-bottom: 20px;
+  font-size: 13px;
+}
+.fot{
+        font-size: 12px;
+        color: #444;
+      }
+
+  .on{
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  .ti{
+    font-size: 13px;
+    color: #444;
+  }
+  /* والد لوگو و متن – کاملاً راست‌چین و ستونی */
+.dk-right {
+    display: flex;
+    flex-direction: column;   /* متن زیر لوگو */
+    align-items: flex-end;    /* راست‌چین کامل */
+    text-align: right;        /* متن راست‌چین */
+    width: fit-content;
+    gap: 6px;
+        margin-right:100px;
+
+}
+
+/* لوگو – راست‌چین واقعی */
+.dk-logo {
+    height: 45px;
+    display: block;
+        margin-right: 20px;
+
+    margin-left: auto;   /* ⭐ برای flex اصلی‌ترین روش راست‌چین */
+}
+
+/* متن‌ها زیر لوگو و کامل راست‌چین */
+.dk-info {
+    display: flex;
+    flex-direction: column;   /* ⭐ ستون شدن متن */
+    align-items: flex-end;    /* متن راست‌چین */
+    text-align: right;  
+    gap: 4px;
+    font-size: 14px;
+    color: #444;
+    margin-right: 20px;
+}
+.dk-col{
+      margin-right: 85px;
+
+}
+.talo{
+  color: #444;
+  font-size: 13px;
+}
+/* 📱 ریسپانسیو موبایل */
+@media (max-width: 768px) {
+      .service-item span {
+      font-size: 9px;
+      color: #333;
+      
+    }
+        .note {
+      padding: 75px;
+      font-size: 15px;
+justify-self: center;
+      margin-left: 70px;
+margin-right: 70px;
+padding-top: 30px;
+padding-bottom: 0px;
+
+    }
+            .gallery{
+  padding: 0 20px;
+  margin: 15px;
+  justify-self: center;
+  padding-right: 10px;
+padding-left: 10px;
+}
+
+.gallery .item {
+  width: 400px;           /* اندازه عکس‌های ردیف اول */
+  height: 150px;
+  flex: 0 0 auto;
+  border-radius: 16px;
+
+}
+.gallery .item.smaller {
+  width: 400px;           /* اندازه عکس‌های ردیف دوم */
+  height: 160px;
+}
+
+@media (max-width: 768px) {
+  .slider {
+    height: 26vh;
+  }
+
+
+}
+
+.dk-social-wrap {text-align:center; margin-top:30px; font-size: 13px;}
+.dk-social a img {width:30px;margin:0 10px;}
+
+
+.dk-newsletter {margin-top:20px; font-size: 15px;}
+.dk-newsletter input {
+padding:10px;
+width:200px;
+border:1px solid #ccc;
+border-radius:5px;
+}
+.dk-newsletter button {
+padding:10px 20px;
+border:none;
+background:#ccc;
+border-radius:5px;
+cursor:pointer;
+}
+
+.fot{
+  font-size: 9px;
+}
+
+/* والد لوگو و متن – کاملاً راست‌چین و ستونی */
+.dk-right {
+    display: flex;
+    flex-direction: column;   /* متن زیر لوگو */
+    align-items: flex-end;    /* راست‌چین کامل */
+    text-align: center;        /* متن راست‌چین */
+    width: fit-content;
+    gap: 6px;
+  }
+
+
+/* لوگو – راست‌چین واقعی */
+.dk-logo {
+    height: 30px;
+    display: block;
+    margin-left: auto;   /* ⭐ برای flex اصلی‌ترین روش راست‌چین */
+}
+
+/* متن‌ها زیر لوگو و کامل راست‌چین */
+.dk-info {
+    display: flex;
+    flex-direction: column;   /* ⭐ ستون شدن متن */
+    align-items: flex-end;    /* متن راست‌چین */
+    text-align: right;  
+    gap: 4px;
+    font-size: 10px;
+    color: #444;
+}
+
+.dk-footer-copy {
+    text-align: center;
+    width: 100%;
+    padding: 20px 0;
+    font-size: 11px;
+    color: #444;
+justify-self: center;
+
+        direction: rtl;
+}
+
+.on{
+  font-size: 15px;
+  margin-bottom: 10px;
+}
+.ti{
+  font-size: 10px;
+}
+.ei{
+  font-size: 11px;
+}
+
+.dk-middle{
+  justify-self: center;
+  padding-left: 100px;
+}
+
+header{
+  justify-self: center;
+}
+.logo-bold{
+  font-size: 12px;
+}
+.logo-light{
+    font-size: 12px;
+    margin-left: 40px;
+
+}
+.buy-btn{
+    font-size: 12px;
+    margin-right: 45px;
+
+}
+.header-center{
+    font-size: 12px;
+
+}
+
+.gold-card{
+  font-size: 10px;
+}
+
+.faq-content{
+  font-size: 10px;
+}
+.triangle{
+  font-size: 10px;
+}
+.faq-item{
+    font-size: 14px;
+
+}
+.faq-section{
+    font-size: 12px;
+
+}
+.digital-gold-card{
+padding: 0px;
+}
+.gold-card{
+    font-size: 12px;
+
+}
+.talo{
+  color: #444;
+}
+}
+
+
+</style>
+</head>
+<body>
+<header class="gold-header">
+  <div class="header-right">
+    <span class="logo-bold">طلای دیجیتال</span>
+    <span class="logo-light">دیجی‌کالا</span>
+  </div>
+<nav class="header-center">
+  <a href="#cards-container">ویژگی‌ها</a>
+  <a href="#digital-gold-card">دریافت فیزیکی</a>
+  <a href="#faq-section">سوالات متداول</a>
+</nav>
+
+
+  <div class="header-left">
+    <a href="./login.html" class="buy-btn">خرید طلای دیجیتال</a>
+  </div>
+</header>
+
+
+<!-- 🔻 اسلایدر -->
+<div class="slider">
+  <div class="slide active" style="background-image:url('./ta.webp');"></div>
+
+</div>
+
+<div class="cards-container"id="cards-container">
+  <div class="gold-card">
+    <h3>
+اعتبار و اعتماد</h3>
+    <div class="talo">دیجی‌کالا  خرید طلای شما را از منبعی معتبر و قابل اطمینان تضمین می‌کند.</div>
+  </div>
+
+  <div class="gold-card">
+    <h3>
+شفافیت کامل در معاملات</h3>
+    <div class="talo">دیجی‌کالا تمامی اطلاعات قیمت را به‌صورت شفاف در اختیار شما می‌گذارد تا تجربه‌ای امن و مطمئن داشته باشید.</div>
+  </div>
+
+  <div class="gold-card">
+    <h3>
+پشتوانه واقعی</h3>
+    <div class="talo">دیجی‌کالا طلای خریداری‌شده را به‌طور امن در انبارهای اختصاصی بانک کارگشایی نگه‌داری می‌کند.</div>
+  </div>
+
+  <div class="gold-card">
+    <h3>نیم سکه بهار آزادی</h3>
+    <div class="talo">دیجی‌کالا قیمت‌گذاری طلا را ساده کرده تا شما با آسودگی خاطر خرید و فروش کنید.
+
+    </div>
+  </div>
+
+  <div class="gold-card">
+    <h3>حذف ریسک تقلبی بودن طلا</h3>
+    <div class="talo">طلای عرضه‌شده از منابع رسمی تأمین و اصالت آن با تأیید آزمایشگاه‌های معتبر تضمین شده است.</div>
+  </div>
+
+  <div class="gold-card">
+    <h3>
+اجرت کم</h3>
+    <div class="talo">طلای دیجیتال بدون اجرت ساخت عرضه می‌شود تا در زمان فروش، ارزش دارایی‌تان بدون نگرانی حفظ شود.</div>
+  </div>
+
+  <div class="gold-card">
+    <h3>حفظ ارزش سرمایه در برابر تورم</h3>
+    <div class="talo">با طلای دیجیتال دیجی‌کالا، به هر میزان که بخواهید طلا بخرید و ارزش دارایی‌تان را از تورم دور نگه دارید.</div>
+  </div>
+
+  <div class="gold-card">
+    <h3>حذف ریسک‌ نگهداری طلای فیزیکی</h3>
+    <div class="talo"> نگهداری از طلا عملی ریسکی است که گاهی اوقات دچار سرقت میشود</div>
+  </div>
+</div>
+
+
+
+
+<div class="digital-gold-card">
+  <div class="digital-gold-text">
+    <h3>دریافت فیزیکی طلا</h3>
+    <p>طلای دیجیتال شما در انبارهای ایمن و مجهز دیجی‌کالا نگهداری می‌شود و در صورت تمایل، امکان دریافت فیزیکی آن نیز فراهم است. شما می‌توانید با خرید حداقل ۵ گرم طلای دیجیتال، درخواست تحویل فیزیکی خود را ثبت کنید. لازم به ذکر است که شمش‌های تحویلی باید مضربی از ۵ گرم باشند.</p>
+  </div>
+
+  <div class="digital-gold-image" id="digital-gold-card">
+    <img src="zar.webp" alt="دریافت فیزیکی طلا">
+  </div>
+</div>
+
+<section class="faq-section" id="faq-section">
+  <h2>سوالات متداول طلای دیجیتال</h2>
+
+  <div class="faq-item">
+    <div class="faq-title">
+      <span class="triangle">&#9654;</span> <!-- مثلث -->
+
+طلای دیجیتال در دیجی‌کالا به چه معنی است؟    </div>
+    <div class="faq-content">
+طلای دیجیتال در دیجی‌کالا، بستری است که امکان خرید و فروش آنلاین طلای آب‌شده ۱۸ عیار را به هر میزان و در هر زمان برای مشتریان فراهم می‌کند. کاربران می‌توانند هر مقدار دلخواه طلا را به صورت الکترونیکی خریداری کرده و توسط دیجی‌کالا در بانک کارگشایی نگهداری کنند.    </div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-title">
+      <span class="triangle">&#9654;</span>
+قیمت‌گذاری طلای دیجیتال به چه صورت انجام می‌شود؟    </div>
+    <div class="faq-content">
+قیمت‌گذاری طلای دیجیتال در دیجی‌کالا به‌صورت لحظه‌ای و توسط دو تأمین‌کننده معتبر انجام می‌شود. این تأمین‌کنندگان از سوی اتحادیه فروشندگان و سازندگان طلا، جواهر، نقره و سکه تهران مورد تأیید قرار گرفته‌اند، و قیمت‌ها به‌روز و دقیق ارائه می‌شوند.    </div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-title">
+      <span class="triangle">&#9654;</span>
+چگونه می‌توانم طلای دیجیتال خریداری کنم؟    </div>
+    <div class="faq-content">
+برای خرید طلای دیجیتال، ابتدا به بخش «خرید و فروش» بروید و تب «خرید» را انتخاب کنید. سپس مقدار طلای مورد نظر خود را به میلی‌گرم یا معادل ریالی آن وارد کرده و پرداخت را به‌راحتی انجام دهید.    </div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-title">
+      <span class="triangle">&#9654;</span>
+کارمزد خرید و فروش طلای دیجیتال چقدر است؟    </div>
+    <div class="faq-content">
+کارمزد خرید و فروش طلای دیجیتال در دیجی‌کالا متغیر است و ممکن است در بازه‌های زمانی مختلف تغییر کند. خبر خوب این است که کارمزدها در این محصول نسبت به روش‌های سنتی خرید طلای آب‌شده، بسیار کمتر است.    </div>
+  </div>
+</section>
+
+
+
+<hr style="border: 0; border-top: 1.5px solid #e4e3e3;margin-bottom: 2.5px;">
+<br>
+<br>
+<div class="dk-right">
+    <img src="./{CC655B16-4F73-4724-980E-71CC6B9BCF70}.png" class="dk-logo" alt="دیجی‌کالا">
+<br>
+    <div class="dk-info">
+        <span>تلفن پشتیبانی ۶۱۹۳۰۰۰۰ - ۰۲۱       |       ۰۲۱-۹۱۰۰۰۱۰۰       |        7 روز هفته، 24 ساعته پاسخگوی شما هستیم  </span>
+      
+    </div>
+</div>
+
+
+<!-- HTML -->
+<footer class="dk-footer">
+<div class="dk-top">
+<div class="dk-item">
+<img src="./z.svg" class="dk-icon" alt="اصالت کالا">
+<div class="fot">ضمانت اصل بودن کالا</div>
+</div>
+<div class="dk-item">
+<img src="7z.svg" class="dk-icon" alt="7 روز بازگشت">
+<div class="fot">هفت روز ضمانت بازگشت کالا</div>
+</div>
+<div class="dk-item">
+<img src="./7.svg" class="dk-icon" alt="پشتیبانی 24 ساعته">
+<div class="fot">7 روز هفته، 24 ساعته پاسخگوی شما هستیم</div>
+</div>
+<div class="dk-item">
+<img src="./par.svg" class="dk-icon" alt="پرداخت در محل">
+<div class="fot">امکان پرداخت در محل</div>
+</div>
+<div class="dk-item">
+<img src="./ex.svg" class="dk-icon" alt="تحویل اکسپرس">
+<div class="fot">امکان تحویل اکسپرس</div>
+</div>
+</div>
+<br>
+
+<div class="dk-middle">
+<div class="dk-col">
+<div class="on">راهنمای خرید از دیجی‌کالا</div>
+<div class="ti" href="#">نحوه ثبت سفارش</div>
+<div class="ti" href="#">رویه ارسال سفارش</div>
+<div class="ti" href="#">شیوه‌های پرداخت</div>
+</div>
+
+
+<div class="dk-col">
+<div class="on">خدمات مشتریان</div>
+<div class="ti" href="#">پاسخ به پرسش‌های متداول</div>
+<div class="ti" href="#">رویه‌های بازگرداندن کالا</div>
+<div class="ti" href="#">شرایط استفاده</div>
+<div class="ti" href="#">حریم خصوصی</div>
+<div class="ti" href="#">گزارش باگ</div>
+</div>
+
+
+<div class="dk-col">
+<div class="on">با دیجی‌کالا</div>
+<div class="ti" href="#">اتاق خبر دیجی‌کالا</div>
+<div class="ti" href="#">فروش در دیجی‌کالا</div>
+<div class="ti" href="#">فرصت‌های شغلی</div>
+<div class="ti" href="#">گزارش تخلف در دیجی‌کالا</div>
+<div class="ti" href="#">تماس با دیجی‌کالا</div>
+<div class="ti" href="#">درباره دیجی‌کالا</div>
+</div>
+</div>
+<br> 
+
+<div class="dk-social-wrap">
+<h4>همراه ما باشید!</h4>
+
+
+
+<form class="dk-newsletter">
+<div class="ei">با ثبت ایمیل، از جدیدترین تخفیف‌ها باخبر شوید</div>
+<input type="email" placeholder="ایمیل شما">
+<button type="submit">ثبت</button>
+</form>
+</div>
+</footer>
+
+
+
+<div class="dk-footer-copy">
+    برای استفاده از مطالب دیجی‌کالا، داشتن «هدف غیرتجاری» و ذکر «منبع» کافیست. 
+    تمام حقوق اين وب‌سايت نیز برای شرکت نوآوران فن آوازه (فروشگاه آنلاین دیجی‌کالا) است.
+</div>
+
+
+</a>
+
+<script>const faqItems = document.querySelectorAll('.faq-item');
+
+faqItems.forEach(item => {
+  const title = item.querySelector('.faq-title');
+  const content = item.querySelector('.faq-content');
+  const triangle = item.querySelector('.triangle');
+
+  title.addEventListener('click', () => {
+    const isOpen = content.style.display === 'block';
+    content.style.display = isOpen ? 'none' : 'block';
+    triangle.style.transform = isOpen ? 'rotate(0deg)' : 'rotate(90deg)';
+  });
+});
+</script>

@@ -1,0 +1,1793 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>فروشگاه اینترنتی دیجی کالا</title>
+  <link rel="icon" type="image/x-icon" href="./digikala-logo-en.png">
+
+  <style>
+    @import url('https://v1.fontapi.ir/css/Shabnam');
+    body {
+      margin: 0;
+      font-family: 'Shabnam', sans-serif;
+      background-color: #ffffff;
+      overflow-x: hidden;
+    }
+
+    header {
+      width: 100%;
+      background-color: #fff;
+      box-shadow: 0 1px 6px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .top-banner {
+      width: 100%;
+      height: 70px;
+      background: url('./d1c1c30406b5c503a5a07b223344978fc80358b6_1760857505.gif') center/cover no-repeat;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 24px;
+      background-color: #fff;
+    }
+
+    .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 0;
+    }
+
+    .logo {
+      font-size: 2rem;
+      font-weight: 900;
+      color: #e41212;
+      white-space: nowrap;
+    }
+
+    .search-box {
+      position: relative;
+      background: #f0f0f0;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      margin-right: 8px;
+      width: 700px;
+      height: 40px;
+    }
+
+    .search-box input {
+      flex: 1;
+      border: none;
+      outline: none;
+      background: transparent;
+      padding: 0 40px 0 12px;
+      font-size: 0.95rem;
+      color: #333;
+    }
+
+    .search-box svg {
+      position: absolute;
+      right: 12px;
+      width: 20px;
+      height: 20px;
+      fill: #777;
+      pointer-events: none;
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      position: relative;
+    }
+
+    .btn-login {
+      font-family: 'Shabnam', sans-serif;
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 20px;
+      padding: 6px 14px;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .btn-login:hover {
+      border-color: #e41212;
+      color: #e41212;
+    }
+
+    .divider {
+      width: 1px;
+      height: 24px;
+      background-color: #ccc;
+    }
+
+    .cart {
+      font-size: 1.2rem;
+      color: #000;
+      cursor: pointer;
+      transition: color 0.2s;
+    }
+    .cart:hover { color: #e41212; }
+
+    .menu-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 24px;
+      background-color: #fff;
+      font-size: 0.8rem;
+      color: #6d6d6d;
+      position: relative;
+    }
+
+    .menu-items { display: flex; align-items: center; gap: 30px; }
+    .menu-item { cursor: pointer; transition: color 0.2s; position: relative; }
+    .menu-item:hover { color: #e41212; }
+
+    /* --- Mobile Responsive --- */
+@media (max-width: 768px) {
+
+  .top-banner {
+    height: 40px;                  /* کوچکتر برای موبایل */
+    background-size: cover;
+  }
+
+  .nav {
+    flex-direction: column;        /* منوها زیر هم قرار بگیرند */
+    gap: 10px;
+    padding: 12px 16px;
+  }
+
+  .nav-left {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .logo {
+    font-size: 1.5rem;
+  }
+
+  .search-box {
+    width: 100%;                   /* سرچ باکس تمام عرض */
+    margin: 10px 0 0 0;
+    height: 36px;
+  }
+
+  .nav-right {
+    display: none;                 /* آیکون‌ها برای موبایل پنهان → اگر خواستی منوی موبایل بسازم */
+  }
+
+  .menu-bar {
+    flex-wrap: wrap;
+    font-size: 0.75rem;
+    padding: 8px 16px;
+    gap: 10px;
+  }
+
+  .menu-items {
+    flex-wrap: wrap;               /* آیتم‌ها در ۲ ردیف */
+    gap: 14px;
+  }
+
+  .menu-item {
+    font-size: 0.8rem;
+  }
+}
+
+    /* 🔽 منوی بازشونده‌ی دسته‌بندی کالاها */
+    .mega-menu {
+      display: none;
+      position: absolute;
+      top: 45px;
+      right: 0;
+      background-color: #fff;
+      width: 950px;
+      box-shadow: 0 4px 12px rgba(66, 65, 65, 0.1);
+      padding: 20px;
+      border-radius: 10px;
+      z-index: 1000;
+      justify-content: space-between;
+    }
+
+    .menu-item:hover .mega-menu {
+      display: flex;
+    }
+
+    .mega-column {
+      width: 22%;
+    }
+
+    .mega-column h4 {
+      color: #e41212;
+      font-size: 15px;
+      margin-bottom: 10px;
+    }
+
+    .mega-column ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .mega-column ul li {
+      margin-bottom: 6px;
+    }
+
+    .mega-column ul li a {
+      text-decoration: none;
+      color: #7c7979;
+      font-size: 14px;
+    }
+
+    .mega-column ul li a:hover {
+      color: #e41212;
+    }
+
+    .location-box {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+      font-weight: 500;
+      color: #5c5b5b;
+    }
+
+
+    /* --- Mobile Responsive --- */
+@media (max-width: 768px) {
+
+  body {
+    overflow-x: hidden;
+  }
+
+  .top-banner {
+    height: 40px;
+    background-size: cover;
+  }
+
+  /* 🔥 ردیف اصلی هدر موبایل */
+  .nav {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 12px;
+    gap: 10px;
+  }
+
+  /* لوگو + سرچ + لوکیشن */
+  .nav-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;   /* فاصله بیشتر */
+    flex: 1;
+    margin-left: 200px;
+  }
+
+  .logo {
+    font-size: 1.3rem;
+  }
+
+  .search-box {
+    flex: 1;
+    height: 34px;
+    margin: 0;
+  }
+
+  /* لوکیشن */
+  .location-box {
+    display: flex;
+    align-items: center;
+    font-size: 0.8rem;
+    flex-shrink: 0;
+    margin-left: 5px;
+  }
+
+  /* ✔ ورود و ثبت‌نام برگردانده شد */
+  .nav-right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 12px;
+  }
+
+  .btn-login {
+    padding: 5px 12px;
+    font-size: 0.8rem;
+  }
+
+  .cart {
+    font-size: 1.1rem;
+  }
+
+  /* 🔽 فاصله بیشتر بین لوکیشن و منوی پایین */
+  header {
+    margin-bottom: 8px;
+  }
+
+  /* --- منوی پایین موبایل → اسکرولی + فاصله بیشتر --- */
+  .menu-bar {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    white-space: nowrap;
+    scrollbar-width: none;
+    padding: 8px 14px;  /* فاصله بیشتر */
+  }
+
+  .menu-bar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .menu-items {
+    display: inline-flex;
+    align-items: center;
+    gap: 26px;   /* فاصله بیشتر طبق خواسته شما */
+    white-space: nowrap;
+  }
+
+  .menu-item {
+    font-size: 12px;
+    white-space: nowrap;
+  }
+
+  /* Mega Menu غیرفعال */
+  .mega-menu {
+    display: none !important;
+  }
+}
+
+@media (max-width: 768px) {
+
+  /* فاصله کمی بیشتر بین لوکیشن و لینک‌های سریع */
+  .menu-bar {
+    margin-bottom: 20px;  /* مقدار افزایش‌یافته ولی طبیعی */
+  }
+
+  .location-box  {
+    padding-top: 14px; /* کمی فاصله بیشتر */
+  }
+}
+
+
+.dk-footer {
+background:#ffffff;
+padding:50px;
+direction:rtl;
+font-family:inherit;
+}
+.dk-top {
+display:flex;
+justify-content:space-between;
+text-align:center;
+margin-bottom:40px;
+}
+.dk-item {
+width:19%;
+}
+.dk-item p {margin-top:10px;font-size:12px;}
+.dk-icon {width:50px;}
+
+
+.dk-middle {
+display:flex;
+justify-content:space-between;
+margin-bottom:40px;
+}
+.dk-col {width:30%;}
+.dk-col h4 {margin-bottom:15px;font-size:18px;}
+.dk-col a {
+display:block;
+color:#333;
+margin-bottom:8px;
+font-size:14px;
+text-decoration:none;
+}
+
+
+.dk-social-wrap {text-align:center; margin-top:30px;}
+.dk-social a img {width:30px;margin:0 10px;}
+
+
+.dk-newsletter {margin-top:20px;}
+.dk-newsletter input {
+padding:10px;
+width:200px;
+border:1px solid #ccc;
+border-radius:5px;
+}
+.dk-newsletter button {
+padding:10px 20px;
+border:none;
+background:#ccc;
+border-radius:5px;
+cursor:pointer;
+}
+
+
+/* والد لوگو و متن – کاملاً راست‌چین و ستونی */
+.dk-right {
+    display: flex;
+    flex-direction: column;   /* متن زیر لوگو */
+    align-items: flex-end;    /* راست‌چین کامل */
+    text-align: right;        /* متن راست‌چین */
+    width: fit-content;
+    gap: 6px;
+}
+
+/* لوگو – راست‌چین واقعی */
+.dk-logo {
+    height: 45px;
+    display: block;
+    margin-left: auto;   /* ⭐ برای flex اصلی‌ترین روش راست‌چین */
+}
+
+/* متن‌ها زیر لوگو و کامل راست‌چین */
+.dk-info {
+    display: flex;
+    flex-direction: column;   /* ⭐ ستون شدن متن */
+    align-items: flex-end;    /* متن راست‌چین */
+    text-align: right;  
+    gap: 4px;
+    font-size: 14px;
+    color: #444;
+}
+
+.dk-footer-copy {
+    text-align: center;
+    width: 100%;
+    padding: 20px 0;
+    font-size: 13px;
+    color: #444;
+    direction: rtl;
+}
+
+
+.photo-strip {
+    width: 100%;
+    height: 120px;          /* ارتفاع نوار – هرچی خواستی بزن */
+    overflow: hidden;       /* اگر عکس بزرگ بود، برش می‌خورد */
+    margin: 20px 0;         /* فاصله از بالا و پایین */
+    border-radius: 8px;     /* اختیاری: گوشه‌های گرد */
+}
+
+.photo-strip img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;      /* عکس به طور زیبا داخل نوار قرار می‌گیرد */
+    display: block;
+}
+
+
+  .menu-item {
+  text-decoration: none;
+  cursor: pointer;
+}
+.menu-item {
+  text-decoration: none; /* حذف خط زیر لینک */
+  color: #6d6d6d;        /* رنگ خاکستری */
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.menu-item:hover {
+  color: #e41212;        /* رنگ قرمز هنگام هاور */
+}
+
+/* ===== Product Component ===== */
+/* ===== Product Component FINAL ===== */
+
+.dk-product {
+  background: #fff;
+  padding: 20px;
+}
+
+.dk-product-grid {
+  display: grid;
+  grid-template-columns: 25% 35% 40%;
+  gap: 20px;
+  align-items: start;
+}
+
+/* ستون‌ها در RTL */
+.dk-buy-box {
+  order: 1;   /* چپ */
+}
+
+.dk-details {
+  order: 2;   /* وسط */
+}
+
+.dk-gallery {
+  order: 3;   /* راست */
+  .dk-main-image {
+  width: 100%;       /* حداکثر عرض ستون */
+  max-width: 500px;  /* می‌توانید مقدار بزرگ‌تر بدهید */
+  height: auto;      /* نسبت تصویر حفظ شود */
+  object-fit: contain;
+  border: 1px solid #eee;
+  margin: 0 auto;    /* وسط چین کردن */
+}
+
+}
+
+/* Buy box */
+.dk-buy-box {
+  border: 1px solid #eee;
+  padding: 15px;
+}
+
+.dk-discount {
+  background: #ef394e;
+  color: #fff;
+  padding: 4px 8px;
+  font-size: 13px;
+  display: inline-block;
+}
+
+.dk-old-price {
+  text-decoration: line-through;
+  color: #888;
+  margin-top: 10px;
+}
+
+.dk-price {
+  font-size: 20px;
+  color: #e60023;
+  font-weight: bold;
+  margin: 8px 0;
+}
+
+.dk-add-to-cart {
+  width: 100%;
+  padding: 12px;
+  background: #ef394e;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+.dk-guarantee {
+  margin-top: 10px;
+  font-size: 13px;
+  color: green;
+}
+
+.dk-product-grid {
+  display: grid;
+  grid-template-columns: 25% 35% 40%;
+  gap: 20px;
+  align-items: start;
+}
+
+/* ستون‌ها در دسکتاپ */
+.dk-buy-box { order: 1; }
+.dk-details { order: 2; }
+.dk-gallery { order: 3; }
+
+/* گالری */
+.dk-gallery .dk-main-image {
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+  object-fit: contain;
+  border: 1px solid #eee;
+  margin: 0 auto;
+}
+
+/* تصاویر کوچک */
+.dk-thumbs {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.dk-thumb {
+  width: 65px;
+  height: 65px;
+  object-fit: cover;
+  cursor: pointer;
+  border: 1px solid #ddd;
+}
+
+/* ===== Mobile Responsive ===== */
+@media (max-width: 768px) {
+  .dk-product-grid {
+    display: flex;
+    flex-direction: column; /* ستون‌ها زیر هم قرار می‌گیرند */
+    gap: 20px;
+  }
+
+  .dk-buy-box,
+  .dk-details,
+  .dk-gallery {
+    width: 100%; /* تمام عرض صفحه */
+  }
+
+  /* ترتیب ستون‌ها در موبایل */
+  .dk-buy-box { order: 1; }
+  .dk-details { order: 2; }
+  .dk-gallery { order: 3; }
+
+  /* گالری تصاویر */
+  .dk-gallery .dk-main-image {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .dk-thumbs {
+    justify-content: center;
+    gap: 8px;
+  }
+
+  .dk-thumb {
+    width: 50px;
+    height: 50px;
+  }
+
+  /* Buy box */
+  .dk-add-to-cart { font-size: 14px; padding: 10px; }
+  .dk-price { font-size: 18px; }
+  .dk-old-price { font-size: 14px; }
+  .dk-guarantee { font-size: 12px; }
+}
+
+/* Details */
+.dk-details ul {
+  padding-right: 18px;
+  padding-left: 210px;
+  line-height:20px;
+}
+
+.dk-details li {
+  margin-bottom: 6px;
+
+}
+.dk-details {
+  font-size: 13px; /* کمتر از حالت پیش‌فرض */
+  line-height: 1.4; /* فاصله خطوط مناسب */
+        margin-top: 30px;    /* فاصله از بالا */
+        color: #525151;
+}
+
+
+/* Gallery */
+.dk-gallery {
+  text-align: center;
+    margin-right: 120px; /* مقدار دلخواه فاصله از راست */
+      margin-top: 30px;    /* فاصله از بالا */
+
+
+}
+
+.dk-main-image {
+  width: 100%;       /* حداکثر عرض ستون */
+  max-width: 600px;  /* می‌توانید مقدار بزرگ‌تر بدهید */
+  height: auto;      /* نسبت تصویر حفظ شود */
+  object-fit: contain;
+  border: 1px solid #eee;
+  margin: 0 auto;    /* وسط چین کردن */
+}
+
+
+.dk-thumbs {
+  margin-top: 10px;
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+.dk-thumb {
+  width: 65px;
+  height: 65px;
+  cursor: pointer;
+  border: 1px solid #ddd;
+  object-fit: cover;
+}
+
+/* ستون‌ها در RTL */
+.dk-buy-box {
+  order: 3;   /* قبلاً 1 بود، حالا راست */
+        margin-top: 30px;    /* فاصله از بالا */
+
+}
+
+.dk-details {
+  order: 2;   /* وسط */
+;}
+
+.dk-gallery {
+  order: 1;   /* قبلاً 3 بود، حالا چپ */
+}
+
+/* Buy box اصلاح شده */
+.dk-buy-box {
+  background-color: #f5f5f5; /* پس‌زمینه طوسی روشن */
+  border: 1px solid #ddd;
+  padding: 15px;
+  width: 250px;           /* عرض کمتر */
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-family: 'Shabnam', sans-serif;
+}
+
+/* فروشنده */
+.dk-seller {
+  font-weight: bold;
+  font-size: 14px;
+  color: #333;
+}
+
+/* قیمت‌ها */
+.dk-old-price {
+  text-decoration: line-through;
+  color: #888;
+  font-size: 13px;
+}
+
+.dk-price {
+  font-size: 18px;
+  color: #e60023;
+  font-weight: bold;
+}
+
+/* دکمه افزودن به سبد خرید */
+.dk-add-to-cart {
+  width: 100%;
+  padding: 10px;
+  background: #ef394e;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  border-radius: 5px;
+  transition: background 0.2s;
+  margin-bottom: 10px;
+}
+
+.dk-add-to-cart:hover {
+  background: #d7303d;
+}
+.dk-product-grid {
+  display: grid;
+  grid-template-columns: 30% 40% 50%; /* مثلا ستون گالری را 40٪ کنید */
+  gap: 20px;
+}
+
+/* تضمین کالا */
+.dk-guarantee {
+  font-size: 12px;
+  color: green;
+}
+.dk-oo{
+    color: #5e5d5d;
+    margin-top: 13px;
+    font-size: 11px;
+    line-height: 7px;
+;}
+
+@media (max-width: 768px) {
+  .dk-product-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .dk-gallery,
+  .dk-details,
+  .dk-buy-box {
+    width: 100%; 
+    order: unset; 
+    margin: 0; /* حذف margin-right یا margin-left اضافی */
+    padding: 0 15px; /* فاصله از چپ و راست */
+    box-sizing: border-box;
+  }
+
+  /* ترتیب ستون‌ها */
+  .dk-gallery { order: 1; }
+  .dk-details { order: 2; }
+  .dk-buy-box { order: 3; }
+
+  /* گالری تصاویر */
+  .dk-gallery .dk-main-image {
+    max-width: 100%;  /* مطمئن شدن از نمایش کامل تصویر */
+    height: auto;
+    display: block;
+    margin: 0 auto;  /* وسط چین کردن */
+  }
+
+  .dk-thumbs {
+    justify-content: center;
+    gap: 8px;
+  }
+
+  .dk-thumb {
+    width: 50px;
+    height: 50px;
+  }
+
+  /* Buy box */
+  .dk-add-to-cart { font-size: 14px; padding: 10px; }
+  .dk-price { font-size: 18px; }
+  .dk-old-price { font-size: 14px; }
+  .dk-guarantee { font-size: 12px; }
+
+  /* Details */
+  .dk-details {
+    font-size: 13px;
+    line-height: 1.4;
+    margin-top: 10px;
+  }
+
+  /* Buy box تنظیمات */
+  .dk-buy-box {
+    width: 100%;
+    margin-top: 10px;
+  }
+}
+
+
+/* نوار ویژگی‌ها */
+.dk-features-bar {
+  display: flex;
+  justify-content: space-around;  /* فاصله مساوی بین ویژگی‌ها */
+  align-items: center;
+  background-color: #fdfdfd;      /* پس‌زمینه طوسی روشن */
+  padding: 12px 20px;
+  border-radius: 8px;
+  margin-top: 50px;               /* فاصله از سکشن معرفی */
+  flex-wrap: wrap;                /* روی موبایل ردیف می‌شوند */
+  gap: 5px;                       /* فاصله بین آیتم‌ها در موبایل */
+  font-size: 10px;
+  color: #838181;
+  text-align: right;               /* راست‌چین مناسب فارسی */
+}
+
+.dk-feature {
+  display: flex;
+  align-items: center;
+  gap: 3px;                        /* فاصله آیکون و متن */
+  margin-right: 100px;
+  margin-left: 100px;
+}
+
+/* ===== Mobile Responsive Features Bar ===== */
+@media (max-width: 768px) {
+  .dk-features-bar {
+    flex-direction: column;   /* آیتم‌ها زیر هم قرار می‌گیرند */
+    justify-content: center;  /* وسط چین کردن کل نوار */
+    align-items: center;
+    padding: 10px 10px;       /* کاهش padding برای موبایل */
+    font-size: 9px;            /* فونت کوچکتر */
+    text-align: center;       /* متن وسط‌چین */
+    gap: 8px;                 /* فاصله بین آیتم‌ها */
+  }
+
+  .dk-feature {
+    margin: 0;               /* حذف margin‌های بزرگ از چپ و راست */
+    gap: 5px;                /* فاصله بین آیکون و متن کمی بیشتر */
+    justify-content: center; /* وسط‌چین کردن آیتم‌ها */
+  }
+}
+
+.dk-intro-simple {
+  background-color: #fdfdfd;
+  padding: 20px;
+  border-radius: 8px;
+  max-width: 950px;
+  margin: 20px ;
+  text-align: right; /* راست‌چین برای فارسی */
+  font-family: 'Shabnam', sans-serif;
+  margin-right: 100px;
+  margin-left: 150px;
+
+}
+
+.dk-intro-simple h2 {
+  color: #3d3d3d;
+  font-size: 18px;
+  margin-bottom: 12px;
+}
+
+.dk-intro-simple p {
+  font-size: 13px;
+  line-height: 1.5;
+  color: #555454;
+}
+
+.dk-intro-simple .intro-toggle {
+  margin-top: 12px;
+  background: none;
+  border: none;
+  color: #2da2a7;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 11px;
+    font-family: 'Shabnam', sans-serif;
+
+}
+
+/* ===== Mobile Responsive: dk-intro-simple ===== */
+@media (max-width: 768px) {
+  .dk-intro-simple {
+    max-width: 100%;       /* تمام عرض موبایل */
+    margin: 15px auto;     /* فاصله از بالا و پایین و وسط‌چین */
+    padding: 15px;         /* کاهش padding */
+    border-radius: 6px;    /* شعاع گوشه کمتر */
+    text-align: right;     /* راست‌چین مناسب فارسی */
+  }
+
+  .dk-intro-simple h2 {
+    font-size: 16px;       /* کاهش اندازه عنوان */
+    margin-bottom: 0px;
+  }
+
+  .dk-intro-simple p {
+    font-size: 12px;       /* کاهش اندازه متن */
+    line-height: 1.4;      /* فاصله خطوط مناسب موبایل */
+  }
+
+  .dk-intro-simple .intro-toggle {
+    font-size: 10px;       /* کمی کوچکتر برای موبایل */
+    margin-top: 10px;
+  }
+}
+
+
+.dk-specs {
+  background-color: #fdfdfd;
+  padding: 20px;
+  border-radius: 8px;
+  max-width: 950px;
+  margin: 30px auto;
+  font-family: 'Shabnam', sans-serif;
+  text-align: right; /* راست‌چین مناسب فارسی */
+  margin-right: 100px;
+}
+
+.dk-specs h2 {
+  color: #383838;
+  font-size: 18px;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #eee;
+  padding-bottom: 8px;
+    text-align: right; /* راست‌چین مناسب فارسی */
+
+}
+
+.dk-spec-item {
+  display: flex;
+  justify-content: space-between; /* عنوان و مقدار کنار هم */
+  padding: 10px 0;
+  border-bottom: 1px solid #eee;
+  font-size: 13px;
+    text-align: right; /* راست‌چین مناسب فارسی */
+
+}
+
+.dk-spec-item:last-child {
+  border-bottom: none; /* حذف خط آخر */
+}
+
+.spec-title {
+  font-weight: bold;
+  color: #696969;
+  max-width: 40%;
+}
+
+.spec-value {
+  color: #383838;
+  text-align: left;
+  max-width: 55%;
+}
+
+/* ===== Mobile Responsive: dk-specs ===== */
+@media (max-width: 768px) {
+  .dk-specs {
+    max-width: 100%;       /* عرض کامل موبایل */
+    margin: 20px 15px;     /* فاصله از بالا/پایین و چپ/راست */
+    padding: 15px;         /* کاهش padding */
+    border-radius: 6px;
+    box-sizing: border-box;
+  }
+
+  .dk-specs h2 {
+    font-size: 16px;       /* کاهش اندازه عنوان */
+    margin-bottom: 15px;
+    padding-bottom: 6px;
+  }
+
+  .dk-spec-item {
+    flex-direction: column;   /* عنوان و مقدار زیر هم قرار بگیرند */
+    align-items: flex-start;  /* چپ‌چین کردن مقادیر */
+    padding: 8px 0;
+    gap: 4px;                 /* فاصله بین عنوان و مقدار */
+  }
+
+  .spec-title {
+    max-width: 100%;
+    font-size: 13px;
+    text-align: right;        /* عنوان راست‌چین */
+  }
+
+  .spec-value {
+    max-width: 100%;
+    font-size: 13px;
+    text-align: right;        /* مقدار راست‌چین برای فارسی */
+    color: #383838;
+  }
+}
+
+  .ft{
+    font-size: 20px;
+    color: #000;
+  }
+
+    .fo{
+    font-size: 16px;
+    color: #000;
+  }
+
+    .ff{
+    font-size: 13px;
+    color: #5c5b5b;
+  }
+.ei{
+  margin-bottom: 20px;
+  font-size: 13px;
+}
+.fot{
+        font-size: 12px;
+        color: #444;
+      }
+
+  .on{
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  .ti{
+    font-size: 13px;
+    color: #444;
+  }
+
+  /* والد لوگو و متن – کاملاً راست‌چین و ستونی */
+.dk-right {
+    display: flex;
+    flex-direction: column;   /* متن زیر لوگو */
+    align-items: flex-end;    /* راست‌چین کامل */
+    text-align: right;        /* متن راست‌چین */
+    width: fit-content;
+    gap: 6px;
+        margin-right:100px;
+
+}
+
+/* لوگو – راست‌چین واقعی */
+.dk-logo {
+    height: 45px;
+    display: block;
+        margin-right: 20px;
+
+    margin-left: auto;   /* ⭐ برای flex اصلی‌ترین روش راست‌چین */
+}
+
+/* متن‌ها زیر لوگو و کامل راست‌چین */
+.dk-info {
+    display: flex;
+    flex-direction: column;   /* ⭐ ستون شدن متن */
+    align-items: flex-end;    /* متن راست‌چین */
+    text-align: right;  
+    gap: 4px;
+    font-size: 14px;
+    color: #444;
+    margin-right: 20px;
+}
+.dk-col{
+      margin-right: 85px;
+
+}
+/* 📱 ریسپانسیو موبایل */
+@media (max-width: 768px) {
+      .service-item span {
+      font-size: 9px;
+      color: #333;
+      
+    }
+        .note {
+      padding: 75px;
+      font-size: 15px;
+justify-self: center;
+      margin-left: 70px;
+margin-right: 70px;
+padding-top: 30px;
+padding-bottom: 0px;
+
+    }
+            .gallery{
+  padding: 0 20px;
+  margin: 15px;
+  justify-self: center;
+  padding-right: 10px;
+padding-left: 10px;
+}
+
+.gallery .item {
+  width: 400px;           /* اندازه عکس‌های ردیف اول */
+  height: 150px;
+  flex: 0 0 auto;
+  border-radius: 16px;
+
+}
+.gallery .item.smaller {
+  width: 400px;           /* اندازه عکس‌های ردیف دوم */
+  height: 160px;
+}
+
+@media (max-width: 480px) {
+  .slider {
+    height: 25vh;
+  }
+
+  .slider-btn {
+    font-size: 1rem;
+    padding: 5px 8px;
+  }
+}
+
+.dk-social-wrap {text-align:center; margin-top:30px; font-size: 13px;}
+.dk-social a img {width:30px;margin:0 10px;}
+
+
+.dk-newsletter {margin-top:20px; font-size: 15px;}
+.dk-newsletter input {
+padding:10px;
+width:200px;
+border:1px solid #ccc;
+border-radius:5px;
+}
+.dk-newsletter button {
+padding:10px 20px;
+border:none;
+background:#ccc;
+border-radius:5px;
+cursor:pointer;
+}
+
+.fot{
+  font-size: 9px;
+}
+
+/* والد لوگو و متن – کاملاً راست‌چین و ستونی */
+.dk-right {
+    display: flex;
+    flex-direction: column;   /* متن زیر لوگو */
+    align-items: flex-end;    /* راست‌چین کامل */
+    text-align: center;        /* متن راست‌چین */
+    width: fit-content;
+    gap: 6px;
+  }
+
+
+/* لوگو – راست‌چین واقعی */
+.dk-logo {
+    height: 30px;
+    display: block;
+    margin-left: auto;   /* ⭐ برای flex اصلی‌ترین روش راست‌چین */
+}
+
+/* متن‌ها زیر لوگو و کامل راست‌چین */
+.dk-info {
+    display: flex;
+    flex-direction: column;   /* ⭐ ستون شدن متن */
+    align-items: flex-end;    /* متن راست‌چین */
+    text-align: right;  
+    gap: 4px;
+    font-size: 10px;
+    color: #444;
+}
+
+.dk-footer-copy {
+    text-align: center;
+    width: 100%;
+    padding: 20px 0;
+    font-size: 11px;
+    color: #444;
+justify-self: center;
+
+        direction: rtl;
+}
+
+.on{
+  font-size: 15px;
+  margin-bottom: 10px;
+}
+.ti{
+  font-size: 10px;
+}
+.ei{
+  font-size: 11px;
+}
+
+.dk-middle{
+  justify-self: center;
+  padding-left: 100px;
+}
+
+.dk-product-grid{
+  margin: 150px;
+}
+}
+/* به CSS موجود اضافه کنید */
+.nav-right {
+    position: relative;
+}
+
+.cart {
+    position: relative;
+    padding: 5px;
+}
+
+/* برای ریسپانسیو */
+@media (max-width: 768px) {
+    .nav-right .cart {
+        font-size: 1.1rem;
+        padding: 4px;
+    }
+    
+    #cart-badge {
+        width: 16px;
+        height: 16px;
+        font-size: 10px;
+        top: -3px;
+        right: -3px;
+    }
+}
+</style>
+
+</head>
+<body>
+    <div id="menuOverlayBg"></div>
+
+<header>
+  <div class="top-banner"></div>
+  <div class="nav">
+    <div class="nav-left">
+      <div class="logo">دیجی‌کالا</div>
+      <div class="search-box">
+        <input id="searchInput" type="text" placeholder="جستجو در دیجی‌کالا..." />
+        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7" stroke="#777" stroke-width="2" fill="none"/><line x1="16" y1="16" x2="21" y2="21" stroke="#777" stroke-width="2" stroke-linecap="round"/></svg>
+      </div>
+    </div>
+    <div class="nav-right">
+      <a href="./login.html" style="text-decoration: none; color: black;">
+        ورود | ثبت‌نام
+      </a>
+          <div class="divider"></div>
+      <div class="cart">🛒</div>
+    </div>
+  </div>
+
+  <div class="menu-bar">
+    <div class="menu-items">
+      <!-- ✅ منوی دسته‌بندی با پنجره بازشونده -->
+      <div class="menu-item">
+        <div id="menuOverlay">
+        دسته‌بندی کالاها
+        <div class="mega-menu">
+          <div class="mega-column">
+            <h4>موبایل</h4>
+            <ul>
+              <li><a href="#">گوشی اپل</a></li>
+              <li><a href="#">گوشی سامسونگ</a></li>
+              <li><a href="#">گوشی شیائومی</a></li>
+              <li><a href="#">گوشی پوکو</a></li>
+              <li><a href="#">گوشی آنر</a></li>
+              <li><a href="#">گوشی ردتون</a></li>
+              <li><a href="#">گوشی نوکیا</a></li>
+              <li><a href="#">گوشی سایفر</a></li>           
+              <li><a href="#">گوشی داریا</a></li>
+              <li><a href="#">گوشی جی ال ایکس</a></li>
+              <li><a href="#">گوشی هواوی</a></li>
+              <li><a href="#">گوشی تی سی ال</a></li>
+              <li><a href="#">گوشی وکال</a></li>
+              <li><a href="#">گوشی بلک ویو</a></li>
+              <li><a href="#">گوشی ریلمی</a></li>
+            </ul>
+          </div>
+          <div class="mega-column">
+            <h4>لپ‌تاپ و کامپیوتر</h4>
+            <ul>
+              <li><a href="#">لپ‌تاپ ایسوس</a></li>
+              <li><a href="#">لپ‌تاپ لنوو</a></li>
+              <li><a href="#">لپ‌تاپ msi</a></li>
+              <li><a href="#">لپ‌تاپ hp</a></li>
+              <li><a href="#">لپ‌تاپ acer</a></li>
+              <li><a href="#">لپ‌تاپ لنوو</a></li>
+              <li><a href="#">ماوس </a></li>
+              <li><a href="#">مانیتور</a></li>
+              <li><a href="#">کیبورد </a></li>
+              <li><a href="#">اسپیکر</a></li>
+              <li><a href="#">پرینتر hp</a></li>
+              <li><a href="#">فلش</a></li>
+              <li><a href="#">هارد</a></li>
+
+            </ul>
+          </div>
+          <div class="mega-column">
+            <h4>خانه و آشپزخانه</h4>
+            <ul>
+              <li><a href="#">یخچال</a></li>
+              <li><a href="#">ماشین لباسشویی</a></li>
+              <li><a href="#">اجاق گاز</a></li>
+              <li><a href="#">مایکروویو</a></li>
+              <li><a href="#">ماشین ظرفشویی</a></li>
+              <li><a href="#">فر</a></li>
+              <li><a href="#">هود</a></li>
+              <li><a href="#">مایکروویو</a></li>
+              <li><a href="#">هواپز</a></li>
+              <li><a href="#">زودپز</a></li>
+              <li><a href="#">سرویس قابلمه</a></li>
+              <li><a href="#">ساندویچ ساز</a></li>
+            </ul>
+          </div>
+          <div class="mega-column">
+            <h4>زیبایی و سلامت</h4>
+            <ul>
+              <li><a href="#">عطر جیبی</a></li>
+              <li><a href="#"> رژلب</a></li>
+              <li><a href="#">مراقبت پوست</a></li>
+              <li><a href="#">کرم پودر</a></li>
+              <li><a href="#">شامپو مو</a></li>
+              <li><a href="#">نرم کننده مو</a></li>
+              <li><a href="#">بادی اسپلش</a></li>
+              <li><a href="#">تونر</a></li>
+              <li><a href="#">ضد آفتاب</a></li>
+              <li><a href="#">کرم مرطوب کننده</a></li>
+              <li><a href="#"> ماسک صورت و بدن</a></li>
+              <li><a href="#">مسواک</a></li>
+              <li><a href="#">خمیر دندان</a></li>
+              <li><a href="#">مراقبت صورت و بدن</a></li>
+              <li><a href="#">پاک کننده صورت</a></li>
+              <li><a href="#">پنکک</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+<a href="./pishnahad.html" class="menu-item">شگفت‌انگیزها</a>
+<a href="supermarket.html" class="menu-item">سوپرمارکت</a>
+<a href="tala.html" class="menu-item">طلای دیجیتال</a>
+<a href="porfrosh.html" class="menu-item">پرفروش‌ترین‌ها</a>
+<a href="indigikala.html" class="menu-item">در دیجی‌کالا بفروشید!</a>
+
+    </div>
+
+    <div class="location-box">
+      <span>ارسال به گلستان، علی‌آباد کتول</span>
+    </div>
+  </div>
+</header>
+
+<!-- Product Component -->
+
+
+  <div class="dk-product-grid">
+
+<!-- خرید -->
+<div class="dk-buy-box">
+  <div class="dk-seller">فروشنده: لوازم جانبی بازران</div>
+        <div class="dk-oo">
+آذربایجان غربی
+        </div>
+      <div class="dk-oo">
+دلفین تک        
+  </div>
+
+  <div class="dk-old-price">1,200,000 تومان</div>
+  <div class="dk-price">840,000 تومان</div>
+
+
+  <button class="dk-add-to-cart" data-product-id="101">
+    افزودن به سبد خرید
+  </button>
+
+      <div class="dk-oo">
+عضویت رایگان دیجی کلاب      </div>
+          <div class="dk-oo">
+ارسال توسط دیجی کالا
+        </div>
+              <div class="dk-oo">
+ارسال رایگان ویژه اعضای دیجی پلاس
+              </div>
+
+    <div class="dk-oo">
+سرویس ویژه دیجی کالا: ۷ روز تضمین بازگشت کالا
+  </div>
+    <div class="dk-oo">
+موجود در انبار دیجی‌کالا
+  </div>
+  <div class="dk-guarantee">
+    ✔️ تضمین اصالت و سلامت کالا
+
+
+  </div>
+
+</div>
+
+
+
+    <!-- توضیحات -->
+    <div class="dk-details">
+      <h1>ایرپاد آر ایکس مدل TWS-EARBUDS</h1>
+      <ul>
+        <li>نویز کنسلینگ فعال</li>
+                <li>ایرپاد دوگوشی</li>
+        <li>اتصال بیسیم و بلوتوثی</li>
+                <li>مقاوم دربرابر گردوغبار</li>
+        <li>توسط دیجی کالا. تامین از 1روز کاری</li>
+
+        <li>140 امتیاز ویژه دیجی کلاب دریافت کنید</li>
+                <li>   ترکیبی از طراحی جمع‌وجور، کیفیت صدای مناسب و قابلیت‌های مدرن را ارائه می‌دهد که استفاده روزمره و کاربری عمومی را راحت و لذت‌بخش می‌کند.  (Earbud) با دو گوشی جداگانه ساخته شده و با قطر درایور ۱۰ میلی‌متر تجربه شنیداری استریو و وضوح صوتی بالایی فراهم می‌کند. بدنه از پلاستیک مقاوم ساخته شده و سبک بودن آن، حمل و استفاده طولانی‌مدت را آسان کرده است.   </p>
+</li>
+
+      </ul>
+    </div>
+   
+    <!-- گالری -->
+    <div class="dk-gallery">
+      <img src="img1.jpg" class="dk-main-image" id="dkMainImage">
+
+      <div class="dk-thumbs">
+        <img src="./هدفون ا.webp" class="dk-thumb">
+        <img src="./هد1.webp" class="dk-thumb">
+        <img src="./هد2.webp" class="dk-thumb">
+        <img src="./هد4.webp" class="dk-thumb">
+      </div>
+    </div>
+
+</div>
+<!-- نوار ویژگی‌ها -->
+<div class="dk-features-bar">
+  <div class="dk-feature">
+        ۲۴ ساعته، ۷ روز هفته
+  </div>
+  <div class="dk-feature">
+     امکان پرداخت در محل
+  </div>
+  <div class="dk-feature">
+     هفت روز ضمانت بازگشت کالا
+  </div>
+    <div class="dk-feature">
+امکان تحویل اکسپرس </div>
+  <div class="dk-feature">
+     ضمانت اصل بودن کالا
+  </div>
+</div>
+
+<!-- سکشن معرفی -->
+<section class="dk-intro-simple">
+  <h2>معرفی</h2>
+
+  <!-- توضیح کوتاه همیشه نمایش داده می‌شود -->
+  <p class="intro-short">
+هدفون بلوتوثی ریمکس مدل Cozy Pods W7n Pro ترکیبی از طراحی جمع‌وجور، کیفیت صدای مناسب و قابلیت‌های مدرن را ارائه می‌دهد که استفاده روزمره و کاربری عمومی را راحت و لذت‌بخش می‌کند. این هدفون تو گوشی (Earbud) با دو گوشی جداگانه ساخته شده و با قطر درایور ۱۰ میلی‌متر تجربه شنیداری استریو و وضوح صوتی بالایی فراهم می‌کند. بدنه از پلاستیک مقاوم ساخته شده و سبک بودن آن، حمل و استفاده طولانی‌مدت را آسان کرده است.   </p>
+
+  <!-- توضیح کامل که اول مخفی است -->
+  <p class="intro-full" style="display: none;">
+هدفون از طریق بلوتوث نسخه ۵.۴ به دستگاه‌های مختلف متصل می‌شود و محدوده عملکرد تا ۱۰ متر امکان جابه‌جایی بدون قطعی را فراهم می‌کند. انرژی هدفون از باتری داخلی ۴۰ میلی‌آمپر‌ساعت تأمین شده و امکان پخش موسیقی بین ۵ تا ۷ ساعت وجود دارد، در حالی که محفظه شارژ با ظرفیت ۳۰۰ میلی‌آمپر‌ساعت امکان شارژ مجدد هدفون را فراهم کرده و زمان لازم برای شارژ کامل هدفون ۱.۵ ساعت است. اقلام همراه شامل کابل شارژ USB Type-C، ۵ جفت بالشتک یدکی و دفترچه راهنما است. ویژگی‌های خاص شامل پشتیبانی از فرمان لمسی برای کنترل موسیقی و تماس‌ها است که کاربری هدفون را راحت و مدرن می‌کند. شارژ هدفون با سیم انجام می‌شود و رابط بلوتوث عملکرد بی‌سیم روان و بدون تأخیر ارائه می‌دهد. این مدل با ترکیب طراحی مقاوم، امکانات پیشرفته و عمر باتری مناسب، گزینه‌ای کارآمد برای کاربران روزمره به شمار می‌آید.
+بستن
+  </p>
+
+  <!-- دکمه بیشتر -->
+  <button class="intro-toggle" data-action="more">مشاهده بیشتر </button>
+</section>
+
+<section class="dk-specs">
+  <h2>مشخصات</h2>
+
+  <div class="dk-spec-item">
+    <span class="spec-title">نوع هدفون، هدست و هندزفری:</span>
+    <span class="spec-value">تو گوشی (Earbud/Earphone)</span>
+  </div>
+
+  <div class="dk-spec-item">
+    <span class="spec-title">سایر توضیحات اقلام همراه هدفون، هندزفری و هدست:</span>
+    <span class="spec-value">تعداد ۵ جفت بالشتک یدکی به همراه کابل شارژ تایپ سی و دفترچه راهنما</span>
+  </div>
+
+  <div class="dk-spec-item">
+    <span class="spec-title">اقلام همراه هدفون، هندزفری و هدست:</span>
+    <span class="spec-value">کابل شارژ، پد گوشی یدکی</span>
+  </div>
+
+  <div class="dk-spec-item">
+    <span class="spec-title">منبع انرژی:</span>
+    <span class="spec-value">باتری</span>
+  </div>
+
+  <div class="dk-spec-item">
+    <span class="spec-title">قابلیت نویز کنسلینگ:</span>
+    <span class="spec-value">نویز کنسلینگ فعال (ANC) و نویز کنسلینگ بدنه</span>
+  </div>
+
+    <div class="dk-spec-item">
+    <span class="spec-title">  ویژگی های خاص:</span>
+    <span class="spec-value">   پشتیبانی از فرمان لمسی</span>
+  </div>
+
+    <div class="dk-spec-item">
+    <span class="spec-title">قابلیت های شارژ: </span>
+    <span class="spec-value"> شارژ باسیم شارژ بیسیم</span>
+  </div>
+
+    <div class="dk-spec-item">
+    <span class="spec-title"> جنس بدنه:</span>
+    <span class="spec-value"> پلی کربنات لایتینگ</span>
+  </div>
+</section>
+
+<br>
+
+
+<hr style="border: 0; border-top: 1.5px solid #e4e3e3;margin-bottom: 2.5px;">
+<br>
+<br>
+<div class="dk-right">
+    <img src="./{CC655B16-4F73-4724-980E-71CC6B9BCF70}.png" class="dk-logo" alt="دیجی‌کالا">
+<br>
+    <div class="dk-info">
+        <span>تلفن پشتیبانی ۶۱۹۳۰۰۰۰ - ۰۲۱       |       ۰۲۱-۹۱۰۰۰۱۰۰       |        7 روز هفته، 24 ساعته پاسخگوی شما هستیم  </span>
+      
+    </div>
+</div>
+
+
+<!-- HTML -->
+<footer class="dk-footer">
+<div class="dk-top">
+<div class="dk-item">
+<img src="./z.svg" class="dk-icon" alt="اصالت کالا">
+<div class="fot">ضمانت اصل بودن کالا</div>
+</div>
+<div class="dk-item">
+<img src="7z.svg" class="dk-icon" alt="7 روز بازگشت">
+<div class="fot">هفت روز ضمانت بازگشت کالا</div>
+</div>
+<div class="dk-item">
+<img src="./7.svg" class="dk-icon" alt="پشتیبانی 24 ساعته">
+<div class="fot">7 روز هفته، 24 ساعته پاسخگوی شما هستیم</div>
+</div>
+<div class="dk-item">
+<img src="./par.svg" class="dk-icon" alt="پرداخت در محل">
+<div class="fot">امکان پرداخت در محل</div>
+</div>
+<div class="dk-item">
+<img src="./ex.svg" class="dk-icon" alt="تحویل اکسپرس">
+<div class="fot">امکان تحویل اکسپرس</div>
+</div>
+</div>
+<br>
+
+<div class="dk-middle">
+<div class="dk-col">
+<div class="on">راهنمای خرید از دیجی‌کالا</div>
+<div class="ti" href="#">نحوه ثبت سفارش</div>
+<div class="ti" href="#">رویه ارسال سفارش</div>
+<div class="ti" href="#">شیوه‌های پرداخت</div>
+</div>
+
+
+<div class="dk-col">
+<div class="on">خدمات مشتریان</div>
+<div class="ti" href="#">پاسخ به پرسش‌های متداول</div>
+<div class="ti" href="#">رویه‌های بازگرداندن کالا</div>
+<div class="ti" href="#">شرایط استفاده</div>
+<div class="ti" href="#">حریم خصوصی</div>
+<div class="ti" href="#">گزارش باگ</div>
+</div>
+
+
+<div class="dk-col">
+<div class="on">با دیجی‌کالا</div>
+<div class="ti" href="#">اتاق خبر دیجی‌کالا</div>
+<div class="ti" href="#">فروش در دیجی‌کالا</div>
+<div class="ti" href="#">فرصت‌های شغلی</div>
+<div class="ti" href="#">گزارش تخلف در دیجی‌کالا</div>
+<div class="ti" href="#">تماس با دیجی‌کالا</div>
+<div class="ti" href="#">درباره دیجی‌کالا</div>
+</div>
+</div>
+<br> 
+
+<div class="dk-social-wrap">
+<h4>همراه ما باشید!</h4>
+
+
+
+<form class="dk-newsletter">
+<div class="ei">با ثبت ایمیل، از جدیدترین تخفیف‌ها باخبر شوید</div>
+<input type="email" placeholder="ایمیل شما">
+<button type="submit">ثبت</button>
+</form>
+</div>
+</footer>
+
+
+
+<div class="dk-footer-copy">
+    برای استفاده از مطالب دیجی‌کالا، داشتن «هدف غیرتجاری» و ذکر «منبع» کافیست. 
+    تمام حقوق اين وب‌سايت نیز برای شرکت نوآوران فن آوازه (فروشگاه آنلاین دیجی‌کالا) است.
+</div>
+
+
+</a>
+<script>// ===== Product Gallery =====
+
+// ===== Product Gallery =====
+const mainImage = document.getElementById('dkMainImage');
+const thumbs = document.querySelectorAll('.dk-thumb');
+
+// ست کردن پیش‌فرض عکس بزرگ روی اولین تصویر کوچک
+if (thumbs.length > 0) {
+  mainImage.src = thumbs[0].src;
+}
+
+// تغییر عکس بزرگ هنگام کلیک روی هر تصویر کوچک
+thumbs.forEach(thumb => {
+  thumb.addEventListener('click', function () {
+    mainImage.src = this.src;
+  });
+});
+
+// متغیر برای ذخیره تعداد آیتم‌های سبد خرید
+let cartCount = 0;
+
+// عنصر آیکون سبد خرید
+const cartIcon = document.querySelector('.cart');
+
+// ایجاد عنصر badge برای نمایش تعداد
+const cartBadge = document.createElement('span');
+cartBadge.id = 'cart-badge';
+cartBadge.style.cssText = `
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background-color: #ef394e;
+    color: white;
+    border-radius: 50%;
+    width: 18px;
+    height: 18px;
+    font-size: 11px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+`;
+cartIcon.style.position = 'relative';
+cartIcon.appendChild(cartBadge);
+
+// ابتدا badge را مخفی می‌کنیم
+cartBadge.style.display = 'none';
+
+// تابع برای به‌روزرسانی badge
+function updateCartBadge() {
+    if (cartCount > 0) {
+        cartBadge.textContent = cartCount;
+        cartBadge.style.display = 'flex';
+    } else {
+        cartBadge.style.display = 'none';
+    }
+}
+
+// اضافه کردن رویداد کلیک به دکمه‌های "افزودن به سبد خرید"
+document.addEventListener('DOMContentLoaded', function() {
+    // دکمه‌های افزودن به سبد خرید
+    const addToCartButtons = document.querySelectorAll('.dk-add-to-cart');
+    
+    addToCartButtons.forEach(button => {
+        button.addEventListener('click', function(event) {
+            event.preventDefault();
+            
+            // افزایش تعداد
+            cartCount++;
+            
+            // به‌روزرسانی badge
+            updateCartBadge();
+            
+            // نمایش پیام موفقیت (اختیاری)
+            showSuccessMessage('کالا با موفقیت به سبد خرید اضافه شد!');
+            
+            // افزودن انیمیشن به آیکون (اختیاری)
+            animateCartIcon();
+        });
+    });
+    
+    // همچنین برای آیکون سبد خرید در نوار بالایی
+    const headerCartIcon = document.querySelector('.nav-right .cart');
+    if (headerCartIcon) {
+        headerCartIcon.addEventListener('click', function(e) {
+            e.preventDefault();
+            // اینجا می‌توانید صفحه سبد خرید را باز کنید
+            alert(`شما ${cartCount} آیتم در سبد خرید دارید`);
+        });
+    }
+});
+
+// تابع برای نمایش پیام موفقیت (اختیاری)
+function showSuccessMessage(message) {
+    // ایجاد پیام موقت
+    const toast = document.createElement('div');
+    toast.textContent = message;
+    toast.style.cssText = `
+        position: fixed;
+        top: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px 20px;
+        border-radius: 5px;
+        z-index: 9999;
+        font-family: 'Shabnam', sans-serif;
+        font-size: 14px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        animation: fadeInOut 3s ease-in-out;
+    `;
+    
+    document.body.appendChild(toast);
+    
+    setTimeout(() => {
+        toast.remove();
+    }, 3000);
+}
+
+// تابع برای انیمیشن آیکون سبد خرید (اختیاری)
+function animateCartIcon() {
+    const cartIcon = document.querySelector('.nav-right .cart');
+    cartIcon.style.transform = 'scale(1.2)';
+    
+    setTimeout(() => {
+        cartIcon.style.transform = 'scale(1)';
+    }, 300);
+}
+
+// استایل انیمیشن برای پیام
+const style = document.createElement('style');
+style.textContent = `
+    @keyframes fadeInOut {
+        0% { opacity: 0; top: 0; }
+        20% { opacity: 1; top: 20px; }
+        80% { opacity: 1; top: 20px; }
+        100% { opacity: 0; top: 0; }
+    }
+`;
+document.head.appendChild(style);
+
+// به‌روزرسانی اولیه badge
+updateCartBadge();
+س
+// ===== Toggle توضیحات =====
+const toggleBtn = document.querySelector('.intro-toggle');
+const fullText = document.querySelector('.intro-full');
+
+toggleBtn.addEventListener('click', () => {
+  if (fullText.style.display === 'none') {
+    fullText.style.display = 'block';
+    toggleBtn.textContent = 'بستن ';
+  } else {
+    fullText.style.display = 'none';
+    toggleBtn.textContent = 'مشاهده بیشتر ';
+  }
+});
+</script>

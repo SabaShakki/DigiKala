@@ -1,0 +1,2359 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>فروشگاه اینترنتی دیجی کالا</title>
+  <link rel="icon" type="image/x-icon" href="./digikala-logo-en.png">
+
+  <style>
+    @import url('https://v1.fontapi.ir/css/Shabnam');
+    body {
+      margin: 0;
+      font-family: 'Shabnam', sans-serif;
+      background-color: #ffffff;
+      overflow-x: hidden;
+    }
+
+    header {
+      width: 100%;
+      background-color: #fff;
+      box-shadow: 0 1px 6px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .top-banner {
+      width: 100%;
+      height: 70px;
+      background: url('./d1c1c30406b5c503a5a07b223344978fc80358b6_1760857505.gif') center/cover no-repeat;
+    }
+
+    .nav {
+      display: flex;
+      align-items:center;
+      justify-content: space-between;
+      padding: 12px 24px;
+      background-color: #fff;
+    }
+
+    .nav-left {
+      display: flex;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 2rem;
+      font-weight: 900;
+      color: #e41212;
+      white-space: nowrap;
+      font-family: 'Shabnam', sans-serif;
+
+    }
+
+    .search-box {
+      
+      position: relative;
+      background: #f0f0f0;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      margin-right: 8px;
+      width: 700px;
+      height: 40px;
+    }
+
+    .search-box input {
+      border: none;
+      outline: none;
+      background: transparent;
+      padding: 0 40px 0 12px;
+      font-size: 0.95rem;
+      color: #333;
+    }
+
+    .search-box svg {
+      position: absolute;
+      right: 12px;
+      width: 20px;
+      height: 20px;
+      fill: #777;
+      pointer-events: none;
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      position: relative;
+    }
+
+    .btn-login {
+      font-family: 'Shabnam', sans-serif;
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 20px;
+      padding: 6px 14px;
+      font-size: 0.9rem;
+    }
+    .btn-login:hover {
+      border-color: #e41212;
+      color: #e41212;
+    }
+
+    .divider {
+      width: 1px;
+      height: 24px;
+      background-color: #ccc;
+    }
+
+    .cart {
+      font-size: 1.2rem;
+      color: #000;
+      cursor: pointer;
+      transition: color 0.2s;
+    }
+    .cart:hover { color: #e41212; }
+
+    .menu-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 24px;
+      background-color: #fff;
+      font-size: 0.8rem;
+      color: #6d6d6d;
+      position: relative;
+    }
+
+    .menu-items { display: flex; align-items: center; gap: 30px; }
+    .menu-item { cursor: pointer; transition: color 0.2s; position: relative; }
+    .menu-item:hover { color: #e41212; }
+
+    /* --- Mobile Responsive --- */
+@media (max-width: 768px) {
+
+  .top-banner {
+    height: 40px;                  /* کوچکتر برای موبایل */
+    background-size: cover;
+  }
+
+  .nav {
+    flex-direction: column;        /* منوها زیر هم قرار بگیرند */
+    gap: 10px;
+    padding: 12px 16px;
+  }
+
+  .nav-left {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .logo {
+    font-size: 1.5rem;
+  }
+
+  .search-box {
+    width: 100%;                   /* سرچ باکس تمام عرض */
+    margin: 10px 0 0 0;
+    height: 36px;
+  }
+
+  .nav-right {
+    display: none;                 /* آیکون‌ها برای موبایل پنهان → اگر خواستی منوی موبایل بسازم */
+  }
+
+  .menu-bar {
+    flex-wrap: wrap;
+    font-size: 0.75rem;
+    padding: 8px 16px;
+    gap: 10px;
+  }
+
+  .menu-items {
+    flex-wrap: wrap;               /* آیتم‌ها در ۲ ردیف */
+    gap: 14px;
+  }
+
+  .menu-item {
+    font-size: 0.8rem;
+  }
+}
+
+    /* 🔽 منوی بازشونده‌ی دسته‌بندی کالاها */
+    .mega-menu {
+      display: none;
+      position: absolute;
+      top: 45px;
+      right: 0;
+      background-color: #fff;
+      width: 950px;
+      box-shadow: 0 4px 12px rgba(66, 65, 65, 0.1);
+      padding: 20px;
+      border-radius: 10px;
+      z-index: 1000;
+      justify-content: space-between;
+    }
+
+    .menu-item:hover .mega-menu {
+      display: flex;
+    }
+
+    .mega-column {
+      width: 22%;
+    }
+
+    .mega-column h4 {
+      color: #e41212;
+      font-size: 15px;
+      margin-bottom: 10px;
+    }
+
+    .mega-column ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .mega-column ul li {
+      margin-bottom: 6px;
+    }
+
+    .mega-column ul li a {
+      text-decoration: none;
+      color: #7c7979;
+      font-size: 14px;
+    }
+
+    .mega-column ul li a:hover {
+      color: #e41212;
+    }
+
+    .location-box {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+      font-weight: 500;
+      color: #5c5b5b;
+    }
+
+
+    /* --- Mobile Responsive --- */
+@media (max-width: 768px) {
+
+  body {
+    overflow-x: hidden;
+  }
+
+  .top-banner {
+    height: 40px;
+    background-size: cover;
+  }
+
+  /* خر🔥 ردیف اصلی هدر موبایل */
+  .nav {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 12px;
+    gap: 10px;
+  }
+
+  /* لوگو + سرچ + لوکیشن */
+  .nav-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;   /* فاصله بیشتر */
+    flex: 1;
+margin-left: 200px;  }
+
+  .logo {
+    font-size: 1.3rem;
+  }
+
+  .search-box {
+    flex: 1;
+    height: 34px;
+    margin: 0;
+  }
+
+  /* لوکیشن */
+  .location-box {
+    display: flex;
+    align-items: center;
+    font-size: 0.8rem;
+    flex-shrink: 0;
+    margin-left: 5px;
+  }
+
+  /* ✔ ورود و ثبت‌نام برگردانده شد */
+  .nav-right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 12px;
+  }
+
+  .btn-login {
+    padding: 5px 12px;
+    font-size: 0.8rem;
+  }
+
+  .cart {
+    font-size: 1.1rem;
+  }
+  /* 🔽 فاصله بیشتر بین لوکیشن و منوی پایین */
+  header {
+    margin-bottom: 8px;
+  }
+
+  /* --- منوی پایین موبایل → اسکرولی + فاصله بیشتر --- */
+  .menu-bar {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    white-space: nowrap;
+    scrollbar-width: none;
+    padding: 8px 14px;  /* فاصله بیشتر */
+  }
+
+  .menu-bar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .menu-items {
+    display: inline-flex;
+    align-items: center;
+    gap: 26px;   /* فاصله بیشتر طبق خواسته شما */
+    white-space: nowrap;
+  }
+
+  .menu-item {
+    font-size: 12px;
+    white-space: nowrap;
+  }
+
+  /* Mega Menu غیرفعال */
+  .mega-menu {
+    display: none !important;
+  }
+}
+
+@media (max-width: 768px) {
+
+  /* فاصله کمی بیشتر بین لوکیشن و لینک‌های سریع */
+  .menu-bar {
+    margin-bottom: 20px;  /* مقدار افزایش‌یافته ولی طبیعی */
+  }
+
+  .location-box  {
+    padding-top: 14px; /* کمی فاصله بیشتر */
+  }
+}
+
+    /* ✅ اسلایدر */
+    .slider {
+      position: relative;
+      width: 100%;
+      height: 50vh;
+      overflow: hidden;
+      margin-top: 10px;
+      background: #000;
+    }
+    .slide {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+    }
+    .slide.active { opacity: 1; z-index: 1; }
+
+    .slider-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255,255,255,0.7);
+      border: none;
+      cursor: pointer;
+      font-size: 1.5rem;
+      padding: 8px 14px;
+      border-radius: 50%;
+      transition: background 0.2s;
+      z-index: 2;
+    }
+    .slider-btn:hover { background: rgba(255,255,255,0.9); }
+    .prev { right: 20px; }
+    .next { left: 20px; }
+
+    .dots {
+      position: absolute;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 8px;
+      z-index: 3;
+    }
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.5);
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .dot.active { background: #fff; }
+
+    /* 🔵 دایره‌های زیر اسلایدر */
+    .circle-section {
+      display: flex;
+      justify-content: center;
+      align-items:flex-start;
+      gap: 50px;
+      flex-wrap: wrap;
+      padding: 30px 0;
+      background: #fff;
+    }
+    .circle-item {
+      text-align: center;
+      text-decoration: none;
+      color: #333;
+      transition: transform 0.3s;
+    }
+    .circle-item:hover { transform: translateY(-5px); }
+    .circle-img {
+      width: 50px;
+      height: 50px;
+      border-radius: 70%;
+      object-fit: cover;
+      border: 2px solid #ddd;
+      transition: border 0.3s;
+    }
+    .circle-item:hover .circle-img { border-color: #e41212; }
+    .circle-text { margin-top: 6px; font-size: 0.8rem; }
+
+/* 🔹 Overlay منوی بازشونده */
+#menuOverlayBg {
+  display: none; /* ابتدا مخفی */
+  position:fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  z-index: 900; /* کمتر از mega-menu اما بیشتر از بقیه محتوا */
+}
+
+    /* 🔹 پاپ‌آپ */
+    .popup-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.5);
+      z-index: 2000;
+      justify-content: center;
+      align-items: center;
+      padding: 50px;
+    }
+    .popup-box {
+      background: #fff;
+      border-radius: 16px;
+      width: 50%;
+      max-width: 900px;
+      padding: 30px;
+      position: relative;
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+        .slider {
+  position: relative;
+  width: 100%;
+  height: 380px;
+  overflow: hidden;
+    }
+      .slide {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transition: opacity .7s ease-in-out;
+    }
+    .close-btn {
+      position: absolute;
+      top: 10px;
+      left: 15px;
+      font-size: 1.8rem;
+      border: none;
+      background: none;
+      cursor: pointer;
+      color: #555;
+    }
+    
+    .popup-box h2 {
+      margin-top: 0;
+      font-size: 1.3rem;
+      font-weight: 700;
+    }
+    .popup-box hr {
+      border: none;
+      height: 1px;
+      background: #ccc;
+      margin: 10px 0 25px;
+    }
+    .circle-row {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      flex-wrap: wrap;
+      margin-bottom: 25px;
+    }
+    .popup-box h3 {
+      margin: 20px 0 15px;
+      font-size: 1.1rem;
+      font-weight: 700;
+    }
+    .service-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+    }
+    .service-item {
+      display: flex;
+      align-items: center;
+      background: #f8f8f8;
+      border-radius: 8px;
+      padding: 10px 15px;
+      transition: background 0.3s;
+    }
+    .service-item:hover { background: #f0f0f0; }
+    .service-item img {
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      margin-left: 10px;
+      object-fit: cover;
+    }
+    .service-item span {
+      font-size: 0.9rem;
+      color: #333;
+    }
+
+/* سربرگ */
+.box-header {
+  position: relative;
+  text-align: center;
+  margin-bottom: 25px;
+  
+}
+
+    /* --- Responsive Adjustments (Mobile < 768px) --- */
+@media (max-width: 768px) {
+
+  /* 📌 اسلایدر */
+  .slider {
+    height: 32vh;        /* کوچکتر و مناسب موبایل */
+
+  }
+
+  .slider-btn {
+    font-size: 1.1rem;
+    padding: 6px 10px;
+    top: 50%;
+  }
+
+  .prev { right: 10px; }
+  .next { left: 10px; }
+
+  .dots {
+    bottom: 6px;
+    gap: 6px;
+  }
+  .dot {
+    width: 8px;
+    height: 8px;
+  }
+
+  /* 🔵 دایره‌های زیر اسلایدر */
+  .circle-section {
+    gap: 25px;          /* فاصله کمتر برای جا شدن */
+    padding: 20px 0;
+  }
+
+  .circle-img {
+    width: 40px;
+    height: 40px;       /* کوچکتر */
+    border-width: 1px;
+  }
+
+  .circle-text {
+    font-size: 0.7rem;
+  }
+
+  /* 🔹 پاپ‌آپ */
+  .popup-overlay {
+    padding: 0;  /* موبایلی تمام صفحه */
+  }
+
+  .popup-box {
+    width: 90%;
+    max-width: none;
+    height: 90%;
+    border-radius: 12px;
+    padding: 18px;
+  }
+
+  .close-btn {
+    font-size: 1.5rem;
+    top: 6px;
+    left: 10px;
+  }
+
+  .popup-box h2 {
+    font-size: 1.1rem;
+  }
+
+  .circle-row {
+    gap: 20px;
+    margin-bottom: 18px;
+  }
+
+  /* 🔹 گرید خدمات → در موبایل یک ستون */
+  .service-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .service-item {
+    padding: 10px;
+  }
+
+  .service-item img {
+    width: 40px;
+    height: 40px;
+  }
+
+  .service-item span {
+    font-size: 0.85rem;
+  }
+}
+
+
+
+/* کانتینر گالری */
+.gallery {
+  display: flex;
+  gap: 10px;               /* فاصله بین عکس‌ها */
+  justify-content: center; /* وسط‌چین کردن عکس‌ها */
+  padding: 0 20px;         /* فاصله از چپ و راست صفحه */
+  margin: 0;               /* 🔥 فاصله عمودی حذف شد */
+}
+
+/* هر آیتم */
+.gallery .item {
+  width: 290px;
+  height: 240px;
+  flex: 0 0 auto;
+  border-radius: 16px;
+}
+
+/* خود تصویر */
+.gallery .item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display:flex;
+  border-radius: 16px;
+}
+
+/* جعبه عکس افقی وسط */
+.vertical-box {
+  padding: 0 20px;
+  width: 1200px;
+  height: 90px;
+  margin: 15px auto;        /* 🔥 فاصله بالا و پایین صفر */
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+/* عکس وسطی */
+.vertical-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display:flex;
+  border-radius: 12px;
+}
+
+.gallery {
+  display: flex;
+  flex-wrap: wrap;        /* اجازه می‌دهد ردیف‌های جدید ساخته شود */
+  gap: 10px;              /* فاصله بین عکس‌ها */
+  justify-content: center;
+  padding: 0 20px;
+  margin: 15px;
+}
+
+.gallery .item {
+  width: 290px;           /* اندازه عکس‌های ردیف اول */
+  height: 240px;
+  flex: 0 0 auto;
+  border-radius: 16px;
+}
+
+.gallery .item.smaller {
+  width: 590px;           /* اندازه عکس‌های ردیف دوم */
+  height: 250px;
+}
+
+.gallery .item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 16px;
+}
+p {
+  text-align: center;     /* وسط‌چین کردن متن افقی */
+  font-size: 24px;        /* اندازه متن، می‌توانی تغییر بدهی */
+  margin: 20px 0;         /* فاصله بالا و پایین متن */
+}
+
+/* ---------- تبلت و موبایل ---------- */
+@media (max-width: 1024px) {
+
+  .gallery{
+    padding: 0 12px;
+    margin: 10px 0;
+    gap: 10px;
+  }
+
+  .gallery .item{
+    width: 45%;          /* دو عکس در هر ردیف */
+    height: 180px;
+  }
+
+  .gallery .item.smaller{
+    width: 95%;          /* عکس‌های ردیف دوم تمام‌عرض */
+    height: 220px;
+  }
+
+  p{
+    font-size: 18px;
+    margin: 15px 0;
+  }
+
+  .vertical-box{
+    width: 95%;
+    height: 220px;       /* بنر وسطی بلندتر */
+    margin: 12px auto;
+    padding: 0 10px;
+  }
+
+  .vertical-box img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+/* ---------- موبایل ---------- */
+@media (max-width: 600px) {
+
+  .gallery{
+    gap: 8px;
+    padding: 0 8px;
+  }
+
+  .gallery .item{
+    width: 100%;        /* تک‌ستونه */
+    height: 200px;
+  }
+
+  .gallery .item.smaller{
+    width: 100%;
+    height: 200px;
+  }
+
+  p{
+    font-size: 16px;
+    margin: 12px 0;
+  }
+
+  .vertical-box{
+    width: 95%;
+    height: 200px;
+    margin: 10px auto;
+  }
+}
+
+
+
+/* dual-circle-slider - CSS (نهایی) */
+
+/* تنظیم کلی */
+.dualCircleSlider{
+
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  padding: 18px 0;
+  background: #fff;
+  direction: rtl; /* چون محتوا فارسی است */
+  box-sizing: border-box;
+    width: 1200px;
+  max-width: 95%;
+  background: #fff;
+  margin: 20px auto;
+  padding: 20px 10px 30px;
+  border-radius: 16px;
+  justify-content: space-between;
+
+
+}
+
+/* دکمه های ساده */
+.dcs-btn{
+  background: transparent;
+  border: none;
+  font-size: 30px;
+  color: #444;
+  cursor: pointer;
+  padding: 6px;
+  user-select: none;
+}
+.dcs-btn[disabled]{
+  opacity: .35;
+  pointer-events: none;
+}
+
+/* ---------- تنظیم دید (نمایش دقیق 8.25 دایره) ---------- */
+/* هر دایره: تصویر 75px و فاصله (gap) = 18px → قدم واقعی = 75 + 18 = 93px
+   عرض view برای 8.25 دایره = 93 * 8.25 = 767.25px */
+.dcs-view{
+  overflow: hidden;
+  width: 1000; /* ثابت برای دسکتاپ تا 8.25 دیده شود */
+  max-width: 100%;
+  box-sizing: content-box;
+}
+
+/* ترک حاوی دو ردیف */
+.dcs-track{
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  transition: transform .35s ease;
+  will-change: transform;
+}
+
+/* هر ردیف: آیتم ها در یک خط */
+.dcs-row{
+  display: flex;
+  gap: 18px; /* فاصله بین دایره‌ها */
+  align-items: center;
+  /* width طبیعی‌شان بیشتر از dcs-view است */
+}
+
+/* آیتم دایره */
+.dcs-item{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  color: #222;
+  width: 125px;      /* عرض المان (بدون احتساب gap) */
+  flex-shrink: 0;   /* جلوگیری از کوچک شدن */
+  transition: transform .18s ease;
+  box-sizing: border-box;
+    padding-bottom: 8px; /* ✅ مانع افتادن متن */
+
+}
+
+.dcs-item img{
+  width: 75px;
+  height: 75px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #e6e6e6;
+  transition: transform .18s ease, border-color .18s ease;
+  display: block;
+}
+
+.dcs-item:hover img{
+  transform: translateY(-6px);
+  border-color: #ff2d2d;
+}
+
+.dcs-item span{
+  margin-top: 6px;
+  font-size: 12px;       /* ظریف و شبیه دیجی‌کالا */
+  color: #444;
+  white-space: nowrap;
+  display: block;
+  text-align: center;
+  line-height: 1;
+}
+
+/* ---------- ریسپانسیو موبایل ---------- */
+/* در موبایل می‌خواهیم حدود 6 دایره کامل دیده شود.
+   برای راحتی محاسبات، عرض هر دایره را کمی کمتر می‌کنیم. */
+@media (max-width: 900px){
+  /* کاهش اندازه view تا با صفحه موبایل منطبق شود */
+  .dcs-view{
+    /* برای 6.25 دایره: قدمِ موبایل ~ (62px + 14px gap) = 76px
+       عرض = 76 * 6.25 = 475px
+       اما ما max-width:100% گذاشته‌ایم تا روی صفحات باریک‌تر هم درست شود */
+    width: 480px;
+  }
+
+  .dcs-item{
+    width: 62px;
+  }
+  .dcs-item img{
+    width: 62px;
+    height: 62px;
+  }
+  .dcs-row{
+    gap: 14px;
+  }
+}
+
+
+
+/* چند نکته ظاهری */
+.dualCircleSlider{ font-family: "Tahoma", "Vazir", sans-serif; }
+
+/* ---------- فونت موبایل ---------- */
+@media (max-width: 768px){
+  .dualCircleSlider{
+    font-size: 9px;
+
+    }
+
+  .dcs-item span{
+    font-size: 8px;
+    line-height: 1.1;
+  }
+}
+
+
+.reading-section {
+  direction: rtl;
+  text-align: right;
+  padding: 40px 200px;       /* 👈 فاصله از چپ و راست */
+  font-family: "Vazir", sans-serif;
+  font-size: 5px; /* 👈 سایز کلی متن‌ها */
+
+}
+
+.reading-section h2 {
+  color: #333;
+  font-size: 18px;
+  margin-bottom: 30px;
+  border-right: 4px solid #ffffff;
+  padding-right: 10px;
+}
+
+.reading-section .card-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px; /* کمی فاصله کمتر */
+
+}
+
+.reading-section .card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  overflow: hidden;
+  text-align: center;
+  transition: transform 0.2s ease;
+    font-size: 20px;
+
+}
+
+.reading-section .card:hover {
+  transform: translateY(-5px);
+}
+
+.reading-section .card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+    font-size: 20px;
+    
+
+}
+
+.reading-section .card .info {
+  padding: 10px;
+  border-top: 1px solid #eee;
+  font-size: 20px;
+}
+
+.reading-section .card a {
+  display: block;
+  text-decoration: none;
+  color: #ddd;
+  font-weight: bold;
+  margin-top: 20px;
+  font-size: 20px;
+
+}
+.reading-section .card p {
+  font-size: 13px;
+}
+
+/* ---------- دسکتاپ ---------- */
+.vertical-box {
+  width: 1200px;
+  height: 90px;
+  margin: 15px auto;
+  padding: 0 20px;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.vertical-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;  /* تصویر کادر را پر کند */
+  display: block;
+  border-radius: 12px;
+}
+
+/* ---------- موبایل و تبلت (≤1024px) ---------- */
+@media (max-width: 1024px) {
+  .vertical-box {
+    width: 95%;
+    max-width: 590px;
+    margin: 12px auto;
+          height: 400px;   /* هرچقدر خواستی بیشترش کن */
+
+
+
+  }
+
+  .vertical-box img {
+    width: 100%;
+    height: auto;          /* ارتفاع تصویر proportional */
+    object-fit: contain;   /* تصویر کامل بدون برش */
+    display: block;
+      height: 400px;   /* هرچقدر خواستی بیشترش کن */
+
+  }
+}
+
+/* ---------- موبایل کوچک (≤768px) ---------- */
+@media (max-width: 768px) {
+  .vertical-box {
+    width: 95%;
+    height: auto;
+    
+    margin: 8px auto;
+  }
+
+  .vertical-box img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    display: block;
+  }
+}
+
+/* ---------- موبایل خیلی کوچک (≤480px) ---------- */
+@media (max-width: 480px) {
+  .vertical-box {
+    width: 95%;
+    height: auto;
+    margin: 6px auto;
+  }
+
+  .vertical-box img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    display: block;
+  }
+}
+
+
+    /* کارت تمام صفحه با فاصله از چپ و راست، بدون گوشه */
+
+
+/* 🎯 تنظیم فاصله‌های کادر از صفحه */
+.main-box {
+    width:1200px;
+  margin: 5px auto;          /* فاصله بالا و پایین = 40px */
+
+  background: #ffffff;
+  border: 1px solid #ffffff;
+  padding: 30px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+  box-sizing: border-box;
+  border: none;
+
+}
+
+/* سربرگ */
+.box-header {
+  position: relative;
+  text-align: center;
+  margin-bottom: 25px;
+  
+}
+
+.see-all {
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-size: 14px;
+  color: #0077ff;
+  text-decoration: none;
+}
+
+.title {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+/* شبکه 3 ردیف × 4 ستون */
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(3, auto);
+  gap: 20px;
+}
+
+/* کارت‌ها */
+.product {
+  display: flex;
+  gap: 12px;
+  padding: 12px;
+  border: 1px solid #ddd;
+  background: #fff;
+  border: none;
+background: transparent;
+
+}
+
+.thumb img {
+  width: 90px;
+  height: 90px;
+  object-fit: cover;
+}
+
+.name {
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.desc {
+  font-size: 13px;
+  color: #666;
+}
+
+/* کارت هر محصول لینک‌دار بدون تغییر ظاهر */
+.product {
+  display: flex;
+  gap: 12px;
+  padding: 10px;
+  background: transparent;  /* بدون پس‌زمینه */
+  border: none;             /* بدون کادر */
+  text-decoration: none;    /* زیرخط ندارد */
+  color: inherit;           /* رنگ متن مثل قبل */
+}
+
+
+/* ---------- تبلت و موبایل ---------- */
+@media (max-width: 1024px){
+  .main-box{
+    width: 95%;
+    padding: 20px;
+    margin: 10px auto;
+  }
+
+  .title{
+    font-size: 18px;
+  }
+
+  .see-all{
+    font-size: 13px;
+  }
+
+  .products-grid{
+    grid-template-columns: repeat(2, 1fr); /* 2 ستون */
+    gap: 16px;
+  }
+
+  .thumb img{
+    width: 80px;
+    height: 80px;
+  }
+
+  .name{
+    font-size: 14px;
+  }
+
+  .desc{
+    font-size: 12px;
+  }
+}
+
+/* ---------- موبایل ---------- */
+@media (max-width: 600px){
+  .main-box{
+    width: 95%;
+    padding: 15px;
+    margin: 8px auto;
+  }
+
+  .box-header{
+    margin-bottom: 18px;
+  }
+
+  .title{
+    font-size: 16px;
+  }
+
+  .see-all{
+    font-size: 12px;
+  }
+
+  .products-grid{
+    grid-template-columns: 1fr; /* تک ستون */
+    gap: 14px;
+  }
+
+  .product{
+    gap: 10px;
+    padding: 8px;
+  }
+
+  .thumb img{
+    width: 70px;
+    height: 70px;
+  }
+
+  .name{
+    font-size: 13px;
+  }
+
+  .desc{
+    font-size: 11px;
+  }
+}
+
+/* ---------- موبایل خیلی کوچک ---------- */
+@media (max-width: 420px){
+  .title{
+    font-size: 15px;
+  }
+
+  .thumb img{
+    width: 64px;
+    height: 64px;
+  }
+
+  .name{
+    font-size: 12px;
+  }
+
+  .desc{
+    font-size: 10px;
+  }
+}
+
+
+.dk-footer {
+background:#ffffff;
+padding:50px;
+direction:rtl;
+font-family:inherit;
+}
+.dk-top {
+display:flex;
+justify-content:space-between;
+text-align:center;
+margin-bottom:40px;
+}
+.dk-item {
+width:19%;
+}
+.dk-item p {margin-top:10px;font-size:12px;}
+.dk-icon {width:50px;}
+
+
+.dk-middle {
+display:flex;
+justify-content:space-between;
+margin-bottom:40px;
+}
+.dk-col {width:30%;}
+.dk-col h4 {margin-bottom:15px;font-size:18px;}
+.dk-col a {
+display:block;
+color:#333;
+margin-bottom:8px;
+font-size:14px;
+text-decoration:none;
+}
+
+
+.dk-social-wrap {text-align:center; margin-top:30px;}
+.dk-social a img {width:30px;margin:0 10px;}
+
+
+.dk-newsletter {margin-top:20px;}
+.dk-newsletter input {
+padding:10px;
+width:200px;
+border:1px solid #ccc;
+border-radius:5px;
+}
+.dk-newsletter button {
+padding:10px 20px;
+border:none;
+background:#ccc;
+border-radius:5px;
+cursor:pointer;
+}
+
+
+/* والد لوگو و متن – کاملاً راست‌چین و ستونی */
+.dk-right {
+    display: flex;
+    flex-direction: column;   /* متن زیر لوگو */
+    align-items: flex-end;    /* راست‌چین کامل */
+    text-align: right;        /* متن راست‌چین */
+    width: fit-content;
+    gap: 6px;
+}
+
+/* لوگو – راست‌چین واقعی */
+.dk-logo {
+    height: 45px;
+    display: block;
+    margin-left: auto;   /* ⭐ برای flex اصلی‌ترین روش راست‌چین */
+}
+
+/* متن‌ها زیر لوگو و کامل راست‌چین */
+.dk-info {
+    display: flex;
+    flex-direction: column;   /* ⭐ ستون شدن متن */
+    align-items: flex-end;    /* متن راست‌چین */
+    text-align: right;  
+    gap: 4px;
+    font-size: 14px;
+    color: #444;
+}
+
+.dk-footer-copy {
+    text-align: center;
+    width: 100%;
+    padding: 20px 0;
+    font-size: 13px;
+    color: #444;
+    direction: rtl;
+}
+
+
+.photo-strip {
+    width: 100%;
+    height: 120px;          /* ارتفاع نوار – هرچی خواستی بزن */
+    overflow: hidden;       /* اگر عکس بزرگ بود، برش می‌خورد */
+    margin: 20px 0;         /* فاصله از بالا و پایین */
+    border-radius: 8px;     /* اختیاری: گوشه‌های گرد */
+}
+
+.photo-strip img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;      /* عکس به طور زیبا داخل نوار قرار می‌گیرد */
+    display: block;
+}
+
+
+  .menu-item {
+  text-decoration: none;
+  cursor: pointer;
+}
+.menu-item {
+  text-decoration: none; /* حذف خط زیر لینک */
+  color: #6d6d6d;        /* رنگ خاکستری */
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.menu-item:hover {
+  color: #e41212;        /* رنگ قرمز هنگام هاور */
+}
+
+
+
+    .menu-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 24px;
+      background-color: #fff;
+      font-size: 0.8rem;
+      color: #6d6d6d;
+      position: relative;
+    }
+
+    .menu-items { display: flex; align-items: center; gap: 30px; }
+    .menu-item { cursor: pointer; transition: color 0.2s; position: relative; }
+    .menu-item:hover { color: #e41212; }
+
+    /* 🔽 منوی بازشونده‌ی دسته‌بندی کالاها */
+    .mega-menu {
+      display: none;
+      position: absolute;
+      top: 45px;
+      right: 0;
+      background-color: #fff;
+      width: 950px;
+      box-shadow: 0 4px 12px rgba(66, 65, 65, 0.1);
+      padding: 20px;
+      border-radius: 10px;
+      z-index: 1000;
+      justify-content: space-between;
+    }
+
+    .menu-item:hover .mega-menu {
+      display: flex;
+    }
+
+    .mega-column {
+      width: 22%;
+    }
+
+    .mega-column h4 {
+      color: #e41212;
+      font-size: 15px;
+      margin-bottom: 10px;
+    }
+
+    .mega-column ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .mega-column ul li {
+      margin-bottom: 6px;
+    }
+
+    .mega-column ul li a {
+      text-decoration: none;
+      color: #7c7979;
+      font-size: 14px;
+    }
+
+    .mega-column ul li a:hover {
+      color: #e41212;
+    }
+
+
+    
+/* 🔹 Overlay منوی بازشونده */
+#menuOverlayBg {
+  display: none; /* ابتدا مخفی */
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  z-index: 900; /* کمتر از mega-menu اما بیشتر از بقیه محتوا */
+}
+
+.ei{
+  margin-bottom: 20px;
+  font-size: 13px;
+}
+.fot{
+        font-size: 12px;
+        color: #444;
+      }
+
+  .on{
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  .ti{
+    font-size: 13px;
+    color: #444;
+  }
+  /* والد لوگو و متن – کاملاً راست‌چین و ستونی */
+.dk-right {
+    display: flex;
+    flex-direction: column;   /* متن زیر لوگو */
+    align-items: flex-end;    /* راست‌چین کامل */
+    text-align: right;        /* متن راست‌چین */
+    width: fit-content;
+    gap: 6px;
+        margin-right:100px;
+
+}
+
+/* لوگو – راست‌چین واقعی */
+.dk-logo {
+    height: 45px;
+    display: block;
+        margin-right: 20px;
+
+    margin-left: auto;   /* ⭐ برای flex اصلی‌ترین روش راست‌چین */
+}
+
+/* متن‌ها زیر لوگو و کامل راست‌چین */
+.dk-info {
+    display: flex;
+    flex-direction: column;   /* ⭐ ستون شدن متن */
+    align-items: flex-end;    /* متن راست‌چین */
+    text-align: right;  
+    gap: 4px;
+    font-size: 14px;
+    color: #444;
+    margin-right: 20px;
+}
+.dk-col{
+      margin-right: 85px;
+
+}
+/* 📱 ریسپانسیو موبایل */
+@media (max-width: 768px) {
+      .service-item span {
+      font-size: 9px;
+      color: #333;
+      
+    }
+        .note {
+      padding: 75px;
+      font-size: 15px;
+justify-self: center;
+      margin-left: 70px;
+margin-right: 70px;
+padding-top: 30px;
+padding-bottom: 0px;
+
+    }
+            .gallery{
+  padding: 0 20px;
+  margin: 15px;
+  justify-self: center;
+  padding-right: 10px;
+padding-left: 10px;
+}
+
+.gallery .item {
+  width: 400px;           /* اندازه عکس‌های ردیف اول */
+  height: 150px;
+  flex: 0 0 auto;
+  border-radius: 16px;
+
+}
+.gallery .item.smaller {
+  width: 400px;           /* اندازه عکس‌های ردیف دوم */
+  height: 160px;
+}
+
+@media (max-width: 480px) {
+  .slider {
+    height: 25vh;
+  }
+
+  .slider-btn {
+    font-size: 1rem;
+    padding: 5px 8px;
+  }
+}
+
+.dk-social-wrap {text-align:center; margin-top:30px; font-size: 13px;}
+.dk-social a img {width:30px;margin:0 10px;}
+
+
+.dk-newsletter {margin-top:20px; font-size: 15px;}
+.dk-newsletter input {
+padding:10px;
+width:200px;
+border:1px solid #ccc;
+border-radius:5px;
+}
+.dk-newsletter button {
+padding:10px 20px;
+border:none;
+background:#ccc;
+border-radius:5px;
+cursor:pointer;
+}
+
+.fot{
+  font-size: 9px;
+}
+
+/* والد لوگو و متن – کاملاً راست‌چین و ستونی */
+.dk-right {
+    display: flex;
+    flex-direction: column;   /* متن زیر لوگو */
+    align-items: flex-end;    /* راست‌چین کامل */
+    text-align: center;        /* متن راست‌چین */
+    width: fit-content;
+    gap: 6px;
+  }
+
+
+/* لوگو – راست‌چین واقعی */
+.dk-logo {
+    height: 30px;
+    display: block;
+    margin-left: auto;   /* ⭐ برای flex اصلی‌ترین روش راست‌چین */
+}
+
+/* متن‌ها زیر لوگو و کامل راست‌چین */
+.dk-info {
+    display: flex;
+    flex-direction: column;   /* ⭐ ستون شدن متن */
+    align-items: flex-end;    /* متن راست‌چین */
+    text-align: right;  
+    gap: 4px;
+    font-size: 10px;
+    color: #444;
+}
+
+.dk-footer-copy {
+    text-align: center;
+    width: 100%;
+    padding: 20px 0;
+    font-size: 11px;
+    color: #444;
+justify-self: center;
+
+        direction: rtl;
+}
+
+.on{
+  font-size: 15px;
+  margin-bottom: 10px;
+}
+.ti{
+  font-size: 10px;
+}
+.ei{
+  font-size: 11px;
+}
+
+.dk-middle{
+  justify-self: center;
+  padding-left: 100px;
+}
+.card-container{
+justify-self: center;}
+
+.titi{
+  justify-self: center;
+  font-size: 19px;
+  margin-bottom: 12px;
+}
+}
+
+</style>
+  </style>
+</head>
+<body>
+    <div id="menuOverlayBg"></div>
+
+<header>
+  <div class="top-banner"></div>
+  <div class="nav">
+    <div class="nav-left">
+      <div class="logo">دیجی‌کالا</div>
+      <div class="search-box">
+        <input id="searchInput" type="text" placeholder="جستجو در دیجی‌کالا..." />
+        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7" stroke="#777" stroke-width="2" fill="none"/><line x1="16" y1="16" x2="21" y2="21" stroke="#777" stroke-width="2" stroke-linecap="round"/></svg>
+      </div>
+    </div>
+    <div class="nav-right">
+      <a href="./login.html" style="text-decoration: none; color: black;">
+        ورود | ثبت‌نام
+      </a>       
+          <div class="divider"></div>
+      <div class="cart">🛒</div>
+    </div>
+  </div>
+
+  <div class="menu-bar">
+    <div class="menu-items">
+      <!-- ✅ منوی دسته‌بندی با پنجره بازشونده -->
+      <div class="menu-item">
+        <div id="menuOverlay">
+        دسته‌بندی کالاها
+        <div class="mega-menu">
+          <div class="mega-column">
+            <h4>موبایل</h4>
+            <ul>
+              <li><a href="#">گوشی اپل</a></li>
+              <li><a href="#">گوشی سامسونگ</a></li>
+              <li><a href="#">گوشی شیائومی</a></li>
+              <li><a href="#">گوشی پوکو</a></li>
+              <li><a href="#">گوشی آنر</a></li>
+              <li><a href="#">گوشی ردتون</a></li>
+              <li><a href="#">گوشی نوکیا</a></li>
+              <li><a href="#">گوشی سایفر</a></li>           
+              <li><a href="#">گوشی داریا</a></li>
+              <li><a href="#">گوشی جی ال ایکس</a></li>
+              <li><a href="#">گوشی هواوی</a></li>
+              <li><a href="#">گوشی تی سی ال</a></li>
+              <li><a href="#">گوشی وکال</a></li>
+              <li><a href="#">گوشی بلک ویو</a></li>
+              <li><a href="#">گوشی ریلمی</a></li>
+            </ul>
+          </div>
+          <div class="mega-column">
+            <h4>لپ‌تاپ و کامپیوتر</h4>
+            <ul>
+              <li><a href="#">لپ‌تاپ ایسوس</a></li>
+              <li><a href="#">لپ‌تاپ لنوو</a></li>
+              <li><a href="#">لپ‌تاپ msi</a></li>
+              <li><a href="#">لپ‌تاپ hp</a></li>
+              <li><a href="#">لپ‌تاپ acer</a></li>
+              <li><a href="#">لپ‌تاپ لنوو</a></li>
+              <li><a href="#">ماوس </a></li>
+              <li><a href="#">مانیتور</a></li>
+              <li><a href="#">کیبورد </a></li>
+              <li><a href="#">اسپیکر</a></li>
+              <li><a href="#">پرینتر hp</a></li>
+              <li><a href="#">فلش</a></li>
+              <li><a href="#">هارد</a></li>
+
+            </ul>
+          </div>
+          <div class="mega-column">
+            <h4>خانه و آشپزخانه</h4>
+            <ul>
+              <li><a href="#">یخچال</a></li>
+              <li><a href="#">ماشین لباسشویی</a></li>
+              <li><a href="#">اجاق گاز</a></li>
+              <li><a href="#">مایکروویو</a></li>
+              <li><a href="#">ماشین ظرفشویی</a></li>
+              <li><a href="#">فر</a></li>
+              <li><a href="#">هود</a></li>
+              <li><a href="#">مایکروویو</a></li>
+              <li><a href="#">هواپز</a></li>
+              <li><a href="#">زودپز</a></li>
+              <li><a href="#">سرویس قابلمه</a></li>
+              <li><a href="#">ساندویچ ساز</a></li>
+            </ul>
+          </div>
+          <div class="mega-column">
+            <h4>زیبایی و سلامت</h4>
+            <ul>
+              <li><a href="#">عطر جیبی</a></li>
+              <li><a href="#"> رژلب</a></li>
+              <li><a href="#">مراقبت پوست</a></li>
+              <li><a href="#">کرم پودر</a></li>
+              <li><a href="#">شامپو مو</a></li>
+              <li><a href="#">نرم کننده مو</a></li>
+              <li><a href="#">بادی اسپلش</a></li>
+              <li><a href="#">تونر</a></li>
+              <li><a href="#">ضد آفتاب</a></li>
+              <li><a href="#">کرم مرطوب کننده</a></li>
+              <li><a href="#"> ماسک صورت و بدن</a></li>
+              <li><a href="#">مسواک</a></li>
+              <li><a href="#">خمیر دندان</a></li>
+              <li><a href="#">مراقبت صورت و بدن</a></li>
+              <li><a href="#">پاک کننده صورت</a></li>
+              <li><a href="#">پنکک</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+<a href="./pishnahad.html" class="menu-item">شگفت‌انگیزها</a>
+<a href="supermarket.html" class="menu-item">سوپرمارکت</a>
+<a href="tala.html" class="menu-item">طلای دیجیتال</a>
+<a href="porfrosh.html" class="menu-item">پرفروش‌ترین‌ها</a>
+<a href="indigikala.html" class="menu-item">در دیجی‌کالا بفروشید!</a>
+
+    </div>
+
+    <div class="location-box">
+      <span>ارسال به گلستان، علی‌آباد کتول</span>
+    </div>
+  </div>
+</header>
+
+<!-- 🔻 اسلایدر -->
+<div class="slider">
+  <div class="slide active" style="background-image:url('s1.gif');"></div>
+  <div class="slide" style="background-image:url('s2.webp');"></div>
+  <div class="slide" style="background-image:url('s3.webp');"></div>
+  <div class="slide" style="background-image:url('s4.webp');"></div>
+  <div class="slide" style="background-image:url('s5.webp');"></div>
+  <button class="slider-btn prev">❮</button>
+  <button class="slider-btn next">❯</button>
+  <div class="dots">
+    <div class="dot active"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div>
+  </div>
+</div>
+
+<!-- 🔵 دایره‌ها -->
+<div class="circle-section">
+  <a href="#" class="circle-item"><img src="sup.png" class="circle-img"><div class="circle-text">سوپرمارکت</div></a>
+  <a href="#" class="circle-item"><img src="phon.png" class="circle-img"><div class="circle-text">موبایل</div></a>
+  <a href="#" class="circle-item"><img src="tala.png" class="circle-img"><div class="circle-text">طلای دیجیتال</div></a>
+  <a href="#" class="circle-item"><img src="vipad.png" class="circle-img"><div class="circle-text">شگفت انگیز</div></a>
+  <a href="#" class="circle-item"><img src="dar.png" class="circle-img"><div class="circle-text">اعتبار</div></a>
+  <a href="#" class="circle-item"><img src="kharid.png" class="circle-img"><div class="circle-text">خرید با وام بانکی</div></a>
+  <a href="#" class="circle-item"><img src="kala.png" class="circle-img"><div class="circle-text">جدیدترین کالا</div></a>
+  <a href="#" class="circle-item"><img src="takh.png" class="circle-img"><div class="circle-text">تخفیف بومی محلی</div></a>
+  <a href="#" class="circle-item"><img src="plus.png" class="circle-img"><div class="circle-text">دیجی پلاس</div></a>
+  <a href="#" id="openPopup" class="circle-item"><img src="bi.png" class="circle-img"><div class="circle-text">بیشتر</div></a>
+</div>
+
+<!-- 🔹 پنجره پاپ‌آپ -->
+<div id="popupOverlay" class="popup-overlay">
+    <div class="popup-box">
+      <button class="close-btn">×</button>
+      <h2>خدمات دیجی‌کالا</h2>
+      <hr>
+      <div class="circle-row">
+        <a href="#" class="circle-item"><img src="sup.png" class="circle-img"><div class="circle-text">سوپرمارکت</div></a>
+        <a href="#" class="circle-item"><img src="phon.png" class="circle-img"><div class="circle-text">موبایل</div></a>
+        <a href="#" class="circle-item"><img src="tala.png" class="circle-img"><div class="circle-text">طلای دیجیتال</div></a>
+        <a href="#" class="circle-item"><img src="vipad.png" class="circle-img"><div class="circle-text">شگفت انگیز</div></a>
+        <a href="#" class="circle-item"><img src="dar.png" class="circle-img"><div class="circle-text">اعتبار</div></a>
+        <a href="#" class="circle-item"><img src="kharid.png" class="circle-img"><div class="circle-text">خرید با وام بانکی</div></a>
+  
+  
+      </div>
+      <div class="circle-row">
+        <a href="#" class="circle-item"><img src="kala.png" class="circle-img"><div class="circle-text">جدیدترین کالا</div></a>
+        <a href="#" class="circle-item"><img src="takh.png" class="circle-img"><div class="circle-text">تخفیف‌ها</div></a>
+      </div>
+      <h3>سرویس‌های گروه دیجی‌کالا</h3>
+      <div class="service-grid">
+        <div class="service-item"><img src="sup.png"><span>سوپرمارکت</span></div>
+        <div class="service-item"><img src="phon.png"><span>موبایل</span></div>
+        <div class="service-item"><img src="tala.png"><span>طلای دیجیتال</span></div>
+        <div class="service-item"><img src="kharid.png"><span>خرید با وام بانکی</span></div>
+        <div class="service-item"><img src="takh.png"><span>تخفیف بومی محلی</span></div>
+        <div class="service-item"><img src="vipad.png"><span>واریز شگفت انگیز</span></div>
+        <div class="service-item"><img src="kala.png"><span>جدیدترین کالا</span></div>
+        <div class="service-item"><img src="plus.png"><span>دیجی پلاس </span></div>
+      </div>
+    </div>
+  </div>
+<body>
+  <div class="gallery">
+    <div class="item"><img src="./b1.webp" alt="عکس ۱"></div>
+    <div class="item"><img src="b2.webp" alt="عکس ۲"></div>
+    <div class="item"><img src="b3.webp" alt="عکس ۳"></div>
+    <div class="item"><img src="./b4.webp" alt="عکس ۴"></div>
+  </div>
+</body>
+  <div class="vertical-box">
+    <img src="./b11.webp" alt="عکس عمودی">
+  </div>
+<body>
+  <div class="gallery">
+    <div class="item"><img src="./b6.gif" alt="عکس ۱"></div>
+    <div class="item"><img src="./b7.gif" alt="عکس ۲"></div>
+    <div class="item"><img src="b8.webp" alt="عکس ۳"></div>
+    <div class="item"><img src="./b9.webp" alt="عکس ۴"></div>
+  </div>
+</body>
+<p>خرید بر اساس دسته‌بندی</p>
+
+<!-- 🔵 اسلایدر دو ردیفه دایره‌ای -->
+<!-- dual-circle-slider - HTML -->
+<div class="dualCircleSlider">
+
+  <!-- دکمه قبلی -->
+  <button class="dcs-btn dcs-prev" aria-label="قبلی" type="button">‹</button>
+
+  <!-- محدوده دید (درش overflow:hidden است) -->
+  <div class="dcs-view" aria-hidden="false">
+
+    <!-- ترک حاوی دو ردیف -->
+    <div class="dcs-track">
+
+      <!-- ردیف بالا (10 آیتم) -->
+      <div class="dcs-row dcs-row-top">
+        <a href="#" class="dcs-item"><img src="./mob.jpg" alt=""><span>موبایل</span></a>
+        <a href="#" class="dcs-item"><img src="./lap.jpg" alt=""><span>لپ تاپ</span></a>
+        <a href="#" class="dcs-item"><img src="./kal.jpg" alt=""><span>کالای دیجیتال</span></a>
+        <a href="#" class="dcs-item"><img src="./khan.jpg" alt=""><span>خانه و آشپزخانه</span></a>
+        <a href="#" class="dcs-item"><img src="./lava.jpg" alt=""><span>لوازم خانگی برقی</span></a>
+        <a href="#" class="dcs-item"><img src="./ara.jpg" alt=""><span>آرایشی و بهداشتی</span></a>
+        <a href="#" class="dcs-item"><img src="mod.jpg" alt=""><span>مد و پوشاک</span></a>
+        <a href="#" class="dcs-item"><img src="khod.jpg" alt=""><span>خودرو و موتور</span></a>
+        <a href="#" class="dcs-item"><img src="./abza.jpg" alt=""><span>ابزارآلات و تجهیزات</span></a>
+      </div>
+
+      <!-- ردیف پایین (10 آیتم) -->
+      <div class="dcs-row dcs-row-bottom">
+        <a href="#" class="dcs-item"><img src="./tala.jpg" alt=""><span>طلا و نقره</span></a>
+        <a href="#" class="dcs-item"><img src="./tajh.jpg" alt=""><span>تجهیزات پزشکی و سلامت</span></a>
+        <a href="#" class="dcs-item"><img src="./ketab.jpg" alt=""><span>کتاب و هنر</span></a>
+        <a href="#" class="dcs-item"><img src="./varzesh.jpg" alt=""><span>ورزش و سفر</span></a>
+        <a href="#" class="dcs-item"><img src="kart.jpg" alt=""><span>کارت هدیه و گیفت کارت</span></a>
+        <a href="#" class="dcs-item"><img src="./super.jpg" alt=""><span>سوپر مارکت آنلاین</span></a>
+        <a href="#" class="dcs-item"><img src="./asbab.jpg" alt=""><span>اسباب بازی، کودک و نوزاد</span></a>
+        <a href="#" class="dcs-item"><img src="./mahb.jpg" alt=""><span>محصولات بومی و محلی</span></a>
+        <a href="#" class="dcs-item"><img src="pet.jpg" alt=""><span>پت شاپ</span></a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- دکمه بعدی -->
+  <button class="dcs-btn dcs-next" aria-label="بعدی" type="button">›</button>
+</div>
+
+
+
+<div class="gallery"> 
+   <div class="item smaller"><img src="./b14.webp" alt="عکس ۵"></div>
+  <div class="item smaller"><img src="./b13.webp" alt="عکس ۶"></div>
+</div>
+
+
+
+<div class="main-box">
+
+  <div class="box-header">
+    <a href="#" class="see-all">مشاهده همه</a>
+    <h2 class="title">پرفروش‌ترین کالاها</h2>
+  </div>
+
+  <div class="products-grid">
+
+    <!-- ردیف 1 -->
+    <a href="#" class="product">
+      <div class="thumb"><img src="./1.webp" alt="ویال خوراکی"></div>
+      <div class="meta">
+        <div class="name">ویال خوراکی</div>
+        <div class="desc">عصاره قهوه سبز با طعم پرتقال یوروویتال بسته 6 عددی</div>
+      </div>
+    </a>
+
+    <a href="#" class="product">
+      <div class="thumb"><img src="./2.webp" alt="قرص مولتی ویتامین"></div>
+      <div class="meta">
+        <div class="name">قرص مولتی ویتامین</div>
+        <div class="desc">بسته 30 عددی</div>
+      </div>
+    </a>
+
+    <a href="#" class="product">
+      <div class="thumb"><img src="./3.webp" alt="قرص کلاژن یوروویتال"></div>
+      <div class="meta">
+        <div class="name">قرص کلاژن یوروویتال</div>
+        <div class="desc">1000 میلی گرم بسته 30 عددی</div>
+      </div>
+    </a>
+
+    <a href="#" class="product">
+      <div class="thumb"><img src="./4.webp" alt="دوغ لار گازدار هراز"></div>
+      <div class="meta">
+        <div class="name">دوغ لار گازدار هراز</div>
+        <div class="desc">1000 میلی لیتر</div>
+      </div>
+    </a>
+
+    <!-- ردیف 2 -->
+    <a href="#" class="product">
+      <div class="thumb"><img src="./5.webp" alt="گوشی شیائومی Redmi Note 14 4G"></div>
+      <div class="meta">
+        <div class="name">گوشی شیائومی Redmi Note 14 4G</div>
+        <div class="desc">دو سیم‌کارت 256 گیگابایت با رم 8</div>
+      </div>
+    </a>
+
+    <a href="#" class="product">
+      <div class="thumb"><img src="./6.webp" alt="قرص منیزیم"></div>
+      <div class="meta">
+        <div class="name">قرص منیزیم</div>
+        <div class="desc">بسته 60 عددی</div>
+      </div>
+    </a>
+
+    <a href="#" class="product">
+      <div class="thumb"><img src="./7.webp" alt="قرص زینک پلاس"></div>
+      <div class="meta">
+        <div class="name">قرص زینک پلاس</div>
+        <div class="desc">بسته 60 عددی</div>
+      </div>
+    </a>
+
+    <a href="#" class="product">
+      <div class="thumb"><img src="./8.webp" alt="هدفون بلوتوثی انکر"></div>
+      <div class="meta">
+        <div class="name">هدفون بلوتوثی انکر</div>
+        <div class="desc">باتری قابل شارژ تا 45 ساعت، مقاوم در برابر آب</div>
+      </div>
+    </a>
+
+    <!-- ردیف 3 -->
+    <a href="#" class="product">
+      <div class="thumb"><img src="./9.webp" alt="کپسول ویتامین ای 400"></div>
+      <div class="meta">
+        <div class="name">کپسول ویتامین ای 400</div>
+        <div class="desc">بسته 40 عددی</div>
+      </div>
+    </a>
+
+    <a href="#" class="product">
+      <div class="thumb"><img src="./10.webp" alt="پنیر سفید ایرانی پگاه"></div>
+      <div class="meta">
+        <div class="name">پنیر سفید ایرانی پگاه</div>
+        <div class="desc">400 گرم</div>
+      </div>
+    </a>
+
+    <a href="#" class="product">
+      <div class="thumb"><img src="./11.webp" alt="کپسول مگنیفورت"></div>
+      <div class="meta">
+        <div class="name">کپسول مگنیفورت</div>
+        <div class="desc">بسته 32 عددی</div>
+      </div>
+    </a>
+
+    <a href="#" class="product">
+      <div class="thumb"><img src="./12.webp" alt="کیک تاینی"></div>
+      <div class="meta">
+        <div class="name">کیک تاینی</div>
+        <div class="desc">با مغزی و طعم فندق - 60 گرم</div>
+      </div>
+    </a>
+
+  </div>
+</div>
+
+
+
+
+
+<section class="reading-section">
+  <div class="titi"> خواندنی‌ها</div>
+
+  <div class="card-container">
+    <div class="card">
+      <img src="./krona.webp" alt="عکس ۱">
+      <div class="info">
+        <p> کرونای تیغی، آیا شیوع این کرونای جدید مرگبار است؟</p>
+        <a href="#"> </a>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="./mokamel.webp" alt="عکس ۲">
+      <div class="info">
+        <p> مکمل اینوزیتول، معجزه‌ای برای تنظیم هورمون ها</p>
+        <a href="#"> </a>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="shampo.webp" alt="عکس ۳">
+      <div class="info">
+        <p> بهترین شامپو برای موهای چرب، راز داشتن موهای سبک،تمیز و با طراوت</p>
+        <a href="#"> </a>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="./sweech.webp" alt="عکس ۴">
+      <div class="info">
+        <p>نینتندو سوییچ در آستانه‌ی تبدیل شدن به پرفروش ترین کنسول تاریخ است  </p>
+        <a href="#"> </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<hr style="border: 0; border-top: 1.5px solid #e4e3e3;margin-bottom: 2.5px;">
+<br>
+<br>
+<div class="dk-right">
+    <img src="./{CC655B16-4F73-4724-980E-71CC6B9BCF70}.png" class="dk-logo" alt="دیجی‌کالا">
+<br>
+    <div class="dk-info">
+        <span>تلفن پشتیبانی ۶۱۹۳۰۰۰۰ - ۰۲۱       |       ۰۲۱-۹۱۰۰۰۱۰۰       |        7 روز هفته، 24 ساعته پاسخگوی شما هستیم  </span>
+      
+    </div>
+</div>
+
+
+<!-- HTML -->
+<footer class="dk-footer">
+<div class="dk-top">
+<div class="dk-item">
+<img src="./z.svg" class="dk-icon" alt="اصالت کالا">
+<div class="fot">ضمانت اصل بودن کالا</div>
+</div>
+<div class="dk-item">
+<img src="7z.svg" class="dk-icon" alt="7 روز بازگشت">
+<div class="fot">هفت روز ضمانت بازگشت کالا</div>
+</div>
+<div class="dk-item">
+<img src="./7.svg" class="dk-icon" alt="پشتیبانی 24 ساعته">
+<div class="fot">7 روز هفته، 24 ساعته پاسخگوی شما هستیم</div>
+</div>
+<div class="dk-item">
+<img src="./par.svg" class="dk-icon" alt="پرداخت در محل">
+<div class="fot">امکان پرداخت در محل</div>
+</div>
+<div class="dk-item">
+<img src="./ex.svg" class="dk-icon" alt="تحویل اکسپرس">
+<div class="fot">امکان تحویل اکسپرس</div>
+</div>
+</div>
+<br>
+
+<div class="dk-middle">
+<div class="dk-col">
+<div class="on">راهنمای خرید از دیجی‌کالا</div>
+<div class="ti" href="#">نحوه ثبت سفارش</div>
+<div class="ti" href="#">رویه ارسال سفارش</div>
+<div class="ti" href="#">شیوه‌های پرداخت</div>
+</div>
+
+
+<div class="dk-col">
+<div class="on">خدمات مشتریان</div>
+<div class="ti" href="#">پاسخ به پرسش‌های متداول</div>
+<div class="ti" href="#">رویه‌های بازگرداندن کالا</div>
+<div class="ti" href="#">شرایط استفاده</div>
+<div class="ti" href="#">حریم خصوصی</div>
+<div class="ti" href="#">گزارش باگ</div>
+</div>
+
+
+<div class="dk-col">
+<div class="on">با دیجی‌کالا</div>
+<div class="ti" href="#">اتاق خبر دیجی‌کالا</div>
+<div class="ti" href="#">فروش در دیجی‌کالا</div>
+<div class="ti" href="#">فرصت‌های شغلی</div>
+<div class="ti" href="#">گزارش تخلف در دیجی‌کالا</div>
+<div class="ti" href="#">تماس با دیجی‌کالا</div>
+<div class="ti" href="#">درباره دیجی‌کالا</div>
+</div>
+</div>
+<br> 
+
+<div class="dk-social-wrap">
+<h4>همراه ما باشید!</h4>
+
+
+
+<form class="dk-newsletter">
+<div class="ei">با ثبت ایمیل، از جدیدترین تخفیف‌ها باخبر شوید</div>
+<input type="email" placeholder="ایمیل شما">
+<button type="submit">ثبت</button>
+</form>
+</div>
+</footer>
+
+
+
+<div class="dk-footer-copy">
+    برای استفاده از مطالب دیجی‌کالا، داشتن «هدف غیرتجاری» و ذکر «منبع» کافیست. 
+    تمام حقوق اين وب‌سايت نیز برای شرکت نوآوران فن آوازه (فروشگاه آنلاین دیجی‌کالا) است.
+</div>
+
+
+</a>
+<script>
+  
+  // 🔄 اسلایدر
+  const slides = document.querySelectorAll(".slide");
+  const dots = document.querySelectorAll(".dot");
+  let currentSlide = 0;
+  function showSlide(i){
+    slides.forEach((s,idx)=>s.classList.toggle("active",idx===i));
+    dots.forEach((d,idx)=>d.classList.toggle("active",idx===i));
+  }
+  document.querySelector(".next").onclick=()=>{currentSlide=(currentSlide+1)%slides.length;showSlide(currentSlide);}
+  document.querySelector(".prev").onclick=()=>{currentSlide=(currentSlide-1+slides.length)%slides.length;showSlide(currentSlide);}
+  dots.forEach((d,i)=>d.onclick=()=>{currentSlide=i;showSlide(currentSlide);});
+  setInterval(()=>{currentSlide=(currentSlide+1)%slides.length;showSlide(currentSlide);},5000);
+
+  // 🔹 پاپ‌آپ
+  const popup=document.getElementById("popupOverlay");
+  document.getElementById("openPopup").onclick=(e)=>{e.preventDefault();popup.style.display="flex";}
+  document.querySelector(".close-btn").onclick=()=>{popup.style.display="none";}
+  popup.onclick=(e)=>{if(e.target===popup)popup.style.display="none";}
+
+
+
+
+
+
+// Dual-circle slider (RTL — حرکت به چپ برای "بعدی")
+// Dual-circle slider RTL
+(function(){
+  const track = document.querySelector(".dcs-track");
+  const rows = document.querySelectorAll(".dcs-row");
+  const view = document.querySelector(".dcs-view");
+  const btnPrev = document.querySelector(".dcs-prev");
+  const btnNext = document.querySelector(".dcs-next");
+
+  if (!track || rows.length === 0 || !view || !btnPrev || !btnNext) return;
+
+  let index = 0;
+  let step = 1;
+  let visibleCount = 1;
+  let maxIndex = 0;
+
+  function calculateSizes(){
+    const first = rows[0].children[0];
+    const second = rows[0].children[1];
+    if (!first) return;
+
+    const firstRect = first.getBoundingClientRect();
+    let stride = firstRect.width;
+
+    if(second){
+      const secondRect = second.getBoundingClientRect();
+      stride += Math.max(0, secondRect.left - (firstRect.left + firstRect.width));
+    } else {
+      stride += parseFloat(getComputedStyle(first).marginRight) || 18;
+    }
+
+    step = Math.round(stride);
+    visibleCount = Math.floor(view.clientWidth / step) || 1;
+    maxIndex = Math.max(0, rows[0].children.length - visibleCount);
+
+    // تنظیم index در صورت بزرگ بودن از max
+    if(index > maxIndex) index = maxIndex;
+  }
+
+  function update(){
+    // برای RTL: حرکت "بعدی" یعنی کم کردن ترنسلیت
+    const moveX = index * step;
+    track.style.transform = `translateX(${moveX}px)`;
+
+    btnPrev.disabled = index === 0;
+    btnNext.disabled = index >= maxIndex;
+  }
+
+  btnNext.addEventListener("click", () => {
+    if(index < maxIndex){
+      index++;
+      update();
+    }
+  });
+
+  btnPrev.addEventListener("click", () => {
+    if(index > 0){
+      index--;
+      update();
+    }
+  });
+
+  calculateSizes();
+  update();
+
+  window.addEventListener("resize", () => {
+    calculateSizes();
+    update();
+  });
+
+})();
+
+
+dcsNext.addEventListener("click", () => {
+    currentPos -= step; // ⚠️ اینجا معکوس شد
+    if (currentPos < 0) currentPos = 0;
+    updateSlider();
+});
+
+dcsPrev.addEventListener("click", () => {
+    currentPos += step; // ⚠️ اینجا هم معکوس شد
+    if (currentPos > maxScroll) currentPos = maxScroll;
+    updateSlider();
+});
+
+
+
+    // JS کمکی: اگر کاربر روی هر محصول کلیک یا Enter بزنه به لینک محصول بره.
+    // اگر می‌خوای رفتار دیگری مثل باز شدن مودال باشه، اینجا تغییر بده.
+    (function(){
+      const products = document.querySelectorAll('.product');
+      products.forEach(p => {
+        const url = p.dataset.link || '#';
+        // کلیک ماوس
+        p.addEventListener('click', (e) => {
+          // در تب جدید باز می‌کند؛ اگر می‌خواهی همان تب، location.href را استفاده کن
+          window.open(url, '_blank', 'noopener');
+        });
+        // کلید Enter برای کاربرانی که با کیبورد حرکت می‌کنند
+        p.addEventListener('keydown', (e) => {
+          if(e.key === 'Enter' || e.key === ' '){
+            e.preventDefault();
+            window.open(url, '_blank', 'noopener');
+          }
+        });
+      });
+
+      // اگر نیاز بود می‌توانیم گرید را پویا بسازیم از JSON یا API
+      // (ولی چون خواستی کد کامل باشه، اینجا فقط رفتار کلی قرار داده شده)
+    })();
+
+
+document.querySelector('.dk-newsletter').addEventListener('submit', e => {
+e.preventDefault();
+alert('ایمیل شما ثبت شد');
+});
+
+
+document.querySelector(".dk-back-top").addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+});
+
+  // overlay منوی دسته‌بندی
+const menuItem = document.querySelector(".menu-item");
+const menuOverlayBg = document.getElementById("menuOverlayBg");
+const megaMenu = document.querySelector(".mega-menu");
+
+// وقتی ماوس روی منو می‌رود
+menuItem.addEventListener("mouseenter", () => {
+  megaMenu.style.display = "flex"; // منو را نمایش بده
+  menuOverlayBg.style.display = "block"; // overlay را نمایش بده
+});
+
+// وقتی ماوس از منو خارج شد
+menuItem.addEventListener("mouseleave", () => {
+  megaMenu.style.display = "none"; // منو را مخفی کن
+  menuOverlayBg.style.display = "none"; // overlay را مخفی کن
+});
+
+// همچنین اگر روی overlay کلیک شد، منو بسته شود
+menuOverlayBg.addEventListener("click", () => {
+  megaMenu.style.display = "none";
+  menuOverlayBg.style.display = "none";
+});
+
+
+
+const faqItems = document.querySelectorAll('.faq-item');
+
+faqItems.forEach(item => {
+  const title = item.querySelector('.faq-title');
+  const content = item.querySelector('.faq-content');
+  const triangle = item.querySelector('.triangle');
+
+  title.addEventListener('click', () => {
+    const isOpen = content.style.display === 'block';
+    content.style.display = isOpen ? 'none' : 'block';
+    triangle.style.transform = isOpen ? 'rotate(0deg)' : 'rotate(90deg)';
+  });
+});
+
+
+</script>
+
+</body>
+</html>

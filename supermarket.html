@@ -1,0 +1,2008 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>فروشگاه اینترنتی دیجی کالا</title>
+  <link rel="icon" type="image/x-icon" href="./digikala-logo-en.png">
+
+  <style>
+    @import url('https://v1.fontapi.ir/css/Shabnam');
+    body {
+      margin: 0;
+      font-family: 'Shabnam', sans-serif;
+      background-color: #ffffff;
+      overflow-x: hidden;
+    }
+
+    header {
+      width: 100%;
+      background-color: #fff;
+      box-shadow: 0 1px 6px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .top-banner {
+      width: 100%;
+      height: 70px;
+      background: url('./d1c1c30406b5c503a5a07b223344978fc80358b6_1760857505.gif') center/cover no-repeat;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 24px;
+      background-color: #fff;
+    }
+
+    .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 0;
+    }
+
+    .logo {
+      font-size: 2rem;
+      font-weight: 900;
+      color: #e41212;
+      white-space: nowrap;
+    }
+
+    .search-box {
+      position: relative;
+      background: #f0f0f0;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      margin-right: 8px;
+      width: 700px;
+      height: 40px;
+    }
+
+    .search-box input {
+      flex: 1;
+      border: none;
+      outline: none;
+      background: transparent;
+      padding: 0 40px 0 12px;
+      font-size: 0.95rem;
+      color: #333;
+    }
+
+    .search-box svg {
+      position: absolute;
+      right: 12px;
+      width: 20px;
+      height: 20px;
+      fill: #777;
+      pointer-events: none;
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      position: relative;
+    }
+
+    .btn-login {
+      font-family: 'Shabnam', sans-serif;
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 20px;
+      padding: 6px 14px;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .btn-login:hover {
+      border-color: #e41212;
+      color: #e41212;
+    }
+
+    .divider {
+      width: 1px;
+      height: 24px;
+      background-color: #ccc;
+    }
+
+    .cart {
+      font-size: 1.2rem;
+      color: #000;
+      cursor: pointer;
+      transition: color 0.2s;
+    }
+    .cart:hover { color: #e41212; }
+
+    .menu-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 24px;
+      background-color: #fff;
+      font-size: 0.8rem;
+      color: #6d6d6d;
+      position: relative;
+    }
+
+    .menu-items { display: flex; align-items: center; gap: 30px; }
+    .menu-item { cursor: pointer; transition: color 0.2s; position: relative; }
+    .menu-item:hover { color: #e41212; }
+
+    /* --- Mobile Responsive --- */
+@media (max-width: 768px) {
+
+  .top-banner {
+    height: 40px;                  /* کوچکتر برای موبایل */
+    background-size: cover;
+  }
+
+  .nav {
+    flex-direction: column;        /* منوها زیر هم قرار بگیرند */
+    gap: 10px;
+    padding: 12px 16px;
+  }
+
+  .nav-left {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .logo {
+    font-size: 1.5rem;
+  }
+
+  .search-box {
+    width: 100%;                   /* سرچ باکس تمام عرض */
+    margin: 10px 0 0 0;
+    height: 36px;
+  }
+
+  .nav-right {
+    display: none;                 /* آیکون‌ها برای موبایل پنهان → اگر خواستی منوی موبایل بسازم */
+  }
+
+  .menu-bar {
+    flex-wrap: wrap;
+    font-size: 0.75rem;
+    padding: 8px 16px;
+    gap: 10px;
+  }
+
+  .menu-items {
+    flex-wrap: wrap;               /* آیتم‌ها در ۲ ردیف */
+    gap: 14px;
+  }
+
+  .menu-item {
+    font-size: 0.8rem;
+  }
+}
+
+    /* 🔽 منوی بازشونده‌ی دسته‌بندی کالاها */
+    .mega-menu {
+      display: none;
+      position: absolute;
+      top: 45px;
+      right: 0;
+      background-color: #fff;
+      width: 950px;
+      box-shadow: 0 4px 12px rgba(66, 65, 65, 0.1);
+      padding: 20px;
+      border-radius: 10px;
+      z-index: 1000;
+      justify-content: space-between;
+    }
+
+    .menu-item:hover .mega-menu {
+      display: flex;
+    }
+
+    .mega-column {
+      width: 22%;
+    }
+
+    .mega-column h4 {
+      color: #e41212;
+      font-size: 15px;
+      margin-bottom: 10px;
+    }
+
+    .mega-column ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .mega-column ul li {
+      margin-bottom: 6px;
+    }
+
+    .mega-column ul li a {
+      text-decoration: none;
+      color: #7c7979;
+      font-size: 14px;
+    }
+
+    .mega-column ul li a:hover {
+      color: #e41212;
+    }
+
+    .location-box {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+      font-weight: 500;
+      color: #5c5b5b;
+    }
+
+
+    /* --- Mobile Responsive --- */
+@media (max-width: 768px) {
+
+  body {
+    overflow-x: hidden;
+  }
+
+  .top-banner {
+    height: 40px;
+    background-size: cover;
+  }
+
+  /* 🔥 ردیف اصلی هدر موبایل */
+  .nav {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 12px;
+    gap: 10px;
+  }
+
+  /* لوگو + سرچ + لوکیشن */
+  .nav-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;   /* فاصله بیشتر */
+    flex: 1;
+        margin-left: 200px;
+
+  }
+
+  .logo {
+    font-size: 1.3rem;
+  }
+
+  .search-box {
+    flex: 1;
+    height: 34px;
+    margin: 0;
+  }
+
+  /* لوکیشن */
+  .location-box {
+    display: flex;
+    align-items: center;
+    font-size: 0.8rem;
+    flex-shrink: 0;
+    margin-left: 5px;
+  }
+
+  /* ✔ ورود و ثبت‌نام برگردانده شد */
+  .nav-right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 12px;
+  }
+
+  .btn-login {
+    padding: 5px 12px;
+    font-size: 0.8rem;
+  }
+
+  .cart {
+    font-size: 1.1rem;
+  }
+
+  /* 🔽 فاصله بیشتر بین لوکیشن و منوی پایین */
+  header {
+    margin-bottom: 8px;
+  }
+
+  /* --- منوی پایین موبایل → اسکرولی + فاصله بیشتر --- */
+  .menu-bar {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    white-space: nowrap;
+    scrollbar-width: none;
+    padding: 8px 14px;  /* فاصله بیشتر */
+  }
+
+  .menu-bar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .menu-items {
+    display: inline-flex;
+    align-items: center;
+    gap: 26px;   /* فاصله بیشتر طبق خواسته شما */
+    white-space: nowrap;
+  }
+
+  .menu-item {
+    font-size: 12px;
+    white-space: nowrap;
+  }
+
+  /* Mega Menu غیرفعال */
+  .mega-menu {
+    display: none !important;
+  }
+}
+
+@media (max-width: 768px) {
+
+  /* فاصله کمی بیشتر بین لوکیشن و لینک‌های سریع */
+  .menu-bar {
+    margin-bottom: 20px;  /* مقدار افزایش‌یافته ولی طبیعی */
+  }
+
+  .location-box  {
+    padding-top: 14px; /* کمی فاصله بیشتر */
+  }
+}
+
+
+
+  .menu-item {
+  text-decoration: none;
+  cursor: pointer;
+}
+.menu-item {
+  text-decoration: none; /* حذف خط زیر لینک */
+  color: #6d6d6d;        /* رنگ خاکستری */
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.menu-item:hover {
+  color: #e41212;        /* رنگ قرمز هنگام هاور */
+}
+
+
+
+.dk-footer {
+background:#ffffff;
+padding:50px;
+direction:rtl;
+font-family:inherit;
+}
+.dk-top {
+display:flex;
+justify-content:space-between;
+text-align:center;
+margin-bottom:40px;
+}
+.dk-item {
+width:19%;
+}
+.dk-item p {margin-top:10px;font-size:12px;}
+.dk-icon {width:50px;}
+
+
+.dk-middle {
+display:flex;
+justify-content:space-between;
+margin-bottom:40px;
+}
+.dk-col {width:30%;}
+.dk-col h4 {margin-bottom:15px;font-size:18px;}
+.dk-col a {
+display:block;
+color:#333;
+margin-bottom:8px;
+font-size:14px;
+text-decoration:none;
+}
+
+
+.dk-social-wrap {text-align:center; margin-top:30px;}
+.dk-social a img {width:30px;margin:0 10px;}
+
+
+.dk-newsletter {margin-top:20px;}
+.dk-newsletter input {
+padding:10px;
+width:200px;
+border:1px solid #ccc;
+border-radius:5px;
+}
+.dk-newsletter button {
+padding:10px 20px;
+border:none;
+background:#ccc;
+border-radius:5px;
+cursor:pointer;
+}
+
+
+/* والد لوگو و متن – کاملاً راست‌چین و ستونی */
+.dk-right {
+    display: flex;
+    flex-direction: column;   /* متن زیر لوگو */
+    align-items: flex-end;    /* راست‌چین کامل */
+    text-align: right;        /* متن راست‌چین */
+    width: fit-content;
+    gap: 6px;
+}
+
+/* لوگو – راست‌چین واقعی */
+.dk-logo {
+    height: 45px;
+    display: block;
+    margin-left: auto;   /* ⭐ برای flex اصلی‌ترین روش راست‌چین */
+}
+
+/* متن‌ها زیر لوگو و کامل راست‌چین */
+.dk-info {
+    display: flex;
+    flex-direction: column;   /* ⭐ ستون شدن متن */
+    align-items: flex-end;    /* متن راست‌چین */
+    text-align: right;  
+    gap: 4px;
+    font-size: 14px;
+    color: #444;
+}
+
+.dk-footer-copy {
+    text-align: center;
+    width: 100%;
+    padding: 20px 0;
+    font-size: 13px;
+    color: #444;
+    direction: rtl;
+}
+
+
+.photo-strip {
+    width: 100%;
+    height: 120px;          /* ارتفاع نوار – هرچی خواستی بزن */
+    overflow: hidden;       /* اگر عکس بزرگ بود، برش می‌خورد */
+    margin: 20px 0;         /* فاصله از بالا و پایین */
+    border-radius: 8px;     /* اختیاری: گوشه‌های گرد */
+}
+
+.photo-strip img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;      /* عکس به طور زیبا داخل نوار قرار می‌گیرد */
+    display: block;
+}
+.photo-strip {
+    width: 100%;
+    height: 120px;          /* ارتفاع نوار – هرچی خواستی بزن */
+    overflow: hidden;       /* اگر عکس بزرگ بود، برش می‌خورد */
+    margin: 20px 0;         /* فاصله از بالا و پایین */
+    border-radius: 8px;     /* اختیاری: گوشه‌های گرد */
+}
+
+.photo-strip img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;      /* عکس به طور زیبا داخل نوار قرار می‌گیرد */
+    display: block;
+}
+
+
+.dk-amazing-wrapper {
+  margin: 40px 60px;
+  direction: rtl;
+  font-family: sans-serif;
+}
+
+.dk-main-title {
+  margin-bottom: 12px;
+  color: #0b660b;
+}
+
+.dk-amazing {
+  background: #075f07e3;
+  padding: 20px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.dk-slider-box {
+  overflow: hidden;
+  width: 100%;
+}
+
+.dk-slider {
+  display: flex;
+  gap: 14px;
+  transition: transform 0.4s ease;
+}
+
+.dk-card {
+  min-width: 200px;
+  background: #fff;
+  border-radius: 12px;
+  padding: 10px;
+  text-align: center;
+  position: relative;
+}
+
+.dk-card img {
+  width: 180px;
+  height: 180px;
+}
+
+.dk-discount {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: #175c06;
+  color: #fff;
+  font-size: 12px;
+  padding: 4px 6px;
+  border-radius: 6px;
+}
+
+.dk-title {
+  font-size: 13px;
+  height: 32px;
+  overflow: hidden;
+}
+
+.dk-price del {
+  font-size: 12px;
+  color: #aaa;
+}
+
+.dk-price span {
+  display: block;
+  color: #1c5809;
+  font-weight: bold;
+}
+
+.dk-timer {
+  margin-top: 6px;
+  font-size: 12px;
+  background: #f5f5f5;
+  border-radius: 6px;
+  padding: 4px;
+}
+
+.dk-btn {
+  background: #fff;
+  border: none;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  font-size: 20px;
+  cursor: pointer;
+}
+.amz-header {
+  display: flex;
+  flex-direction: column; /* عنوان و تایمر ستونی باشند */
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.amz-title-wrapper {
+  display: flex;
+  flex-direction: column; /* هر قسمت عنوان زیر هم */
+  align-items: center;
+}
+
+.amz-title {
+  font-size: 22px;
+  color: #fff;
+  font-weight: bold;
+  line-height: 1.2;
+}
+
+.amz-timer {
+  background: #fff;
+  color: #075818;
+  padding: 6px 10px;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 14px;
+  min-width: 80px;
+  text-align: center;
+  margin-top: 8px; /* فاصله بین عنوان و تایمر */
+}
+
+
+/* 📱 ریسپانسیو موبایل */
+@media (max-width: 768px) {
+  .dk-amazing-wrapper {
+    margin: 20px 12px;
+  }
+
+  .dk-amazing {
+    padding: 14px;
+    border-radius: 12px;
+    gap: 8px;
+  }
+
+  .dk-card {
+    min-width: 160px;
+    padding: 8px;
+  }
+
+  .dk-card img {
+    width: 140px;
+    height: 140px;
+  }
+
+  .dk-title {
+    font-size: 12px;
+    height: 28px;
+  }
+
+  .dk-price del {
+    font-size: 11px;
+  }
+
+  .dk-price span {
+    font-size: 13px;
+  }
+
+  .dk-timer {
+    font-size: 11px;
+    padding: 3px;
+  }
+
+  .dk-btn {
+    width: 30px;
+    height: 30px;
+    font-size: 16px;
+  }
+
+  .amz-title {
+    font-size: 18px;
+  }
+
+  .amz-timer {
+    font-size: 12px;
+    padding: 5px 8px;
+    min-width: 70px;
+  }
+}
+
+/* 📱📱 موبایل‌های کوچک */
+@media (max-width: 480px) {
+  .dk-amazing-wrapper {
+    margin: 16px 8px;
+  }
+
+  .dk-card {
+    min-width: 140px;
+  }
+
+  .dk-card img {
+    width: 120px;
+    height: 120px;
+  }
+
+  .amz-title {
+    font-size: 16px;
+  }
+
+  .amz-timer {
+    font-size: 11px;
+    padding: 4px 6px;
+  }
+}
+
+
+
+    /* ✅ اسلایدر */
+    .slider {
+      position: relative;
+      width: 100%;
+      height: 50vh;
+      overflow: hidden;
+      margin-top: 10px;
+      background: #000;
+    }
+    .slide {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+    }
+    .slide.active { opacity: 1; z-index: 1; }
+
+    .slider-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255,255,255,0.7);
+      border: none;
+      cursor: pointer;
+      font-size: 1.5rem;
+      padding: 8px 14px;
+      border-radius: 50%;
+      transition: background 0.2s;
+      z-index: 2;
+    }
+    .slider-btn:hover { background: rgba(255,255,255,0.9); }
+    .prev { right: 20px; }
+    .next { left: 20px; }
+
+    .dots {
+      position: absolute;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 8px;
+      z-index: 3;
+    }
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.5);
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .dot.active { background: #fff; }
+
+
+
+
+/* dual-circle-slider - CSS (نهایی) */
+
+/* تنظیم کلی */
+.dualCircleSlider{
+
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  padding: 18px 0;
+  background: #fff;
+  direction: rtl; /* چون محتوا فارسی است */
+  box-sizing: border-box;
+    width: 1200px;
+  max-width: 95%;
+  background: #fff;
+  margin: 20px auto;
+  padding: 20px 10px 30px;
+  border-radius: 16px;
+
+
+}
+
+/* دکمه های ساده */
+.dcs-btn{
+  background: transparent;
+  border: none;
+  font-size: 30px;
+  color: #444;
+  cursor: pointer;
+  padding: 6px;
+  user-select: none;
+}
+.dcs-btn[disabled]{
+  opacity: .35;
+  pointer-events: none;
+}
+
+/* ---------- تنظیم دید (نمایش دقیق 8.25 دایره) ---------- */
+/* هر دایره: تصویر 75px و فاصله (gap) = 18px → قدم واقعی = 75 + 18 = 93px
+   عرض view برای 8.25 دایره = 93 * 8.25 = 767.25px */
+.dcs-view{
+  overflow: hidden;
+  width: 1000; /* ثابت برای دسکتاپ تا 8.25 دیده شود */
+  max-width: 100%;
+  box-sizing: content-box;
+}
+
+/* ترک حاوی دو ردیف */
+.dcs-track{
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  transition: transform .35s ease;
+  will-change: transform;
+}
+
+/* هر ردیف: آیتم ها در یک خط */
+.dcs-row{
+  display: flex;
+  gap: 18px; /* فاصله بین دایره‌ها */
+  align-items: center;
+  /* width طبیعی‌شان بیشتر از dcs-view است */
+}
+
+/* آیتم دایره */
+.dcs-item{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  color: #222;
+  width: 125px;      /* عرض المان (بدون احتساب gap) */
+  flex-shrink: 0;   /* جلوگیری از کوچک شدن */
+  transition: transform .18s ease;
+  box-sizing: border-box;
+    padding-bottom: 8px; /* ✅ مانع افتادن متن */
+
+}
+
+.dcs-item img{
+  width: 75px;
+  height: 75px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #e6e6e6;
+  transition: transform .18s ease, border-color .18s ease;
+  display: block;
+}
+
+.dcs-item:hover img{
+  transform: translateY(-6px);
+  border-color: #ff2d2d;
+}
+
+.dcs-item span{
+  margin-top: 6px;
+  font-size: 12px;       /* ظریف و شبیه دیجی‌کالا */
+  color: #444;
+  white-space: nowrap;
+  display: block;
+  text-align: center;
+  line-height: 1;
+}
+@media (max-width: 900px) {
+
+  .dualCircleSlider{
+    width: 100%;
+    padding: 14px 6px 22px;
+    gap: 6px;
+  }
+
+  .dcs-view{
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .dcs-row{
+    gap: 14px;
+  }
+
+  .dcs-item{
+    width: 90px;
+  }
+
+  .dcs-item img{
+    width: 60px;
+    height: 60px;
+  }
+
+  .dcs-item span{
+    font-size: 10px;
+  }
+
+  .dcs-btn{
+    font-size: 26px;
+  }
+}
+
+.dualCircleSlider{
+  width: 1200px;
+  max-width: 95%;
+  margin: 20px auto;
+  padding: 20px 10px 30px;
+  background: #fff;
+  border-radius: 16px;
+  direction: rtl;
+}
+
+
+/* MAIN SLIDER */
+.mainSlider {
+  position: relative;
+  width: 100%;
+  height: 50vh;
+  overflow: hidden;
+  margin-top: 10px;
+  background: #000;
+}
+
+.main-slide {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.main-slide.active {
+  opacity: 1;
+  z-index: 1;
+}
+
+.main-slider-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255,255,255,0.7);
+  border: none;
+  cursor: pointer;
+  font-size: 1.5rem;
+  padding: 8px 14px;
+  border-radius: 50%;
+  transition: background 0.2s;
+  z-index: 2;
+}
+.main-slider-btn:hover { background: rgba(255,255,255,0.9); }
+.main-slider-btn.prev { right: 20px; }
+.main-slider-btn.next { left: 20px; }
+
+.main-dots {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  z-index: 3;
+}
+
+.main-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.5);
+  cursor: pointer;
+  transition: background 0.3s;
+}
+.main-dot.active { background: #fff; }
+
+.amz-image{
+  margin-top: 12px;        /* فاصله از نوشته */
+  display: flex;
+  justify-content: center;
+}
+
+.amz-image img{
+  width: 110px;            /* اندازه عکس */
+  max-width: 100%;
+  height: auto;
+}
+
+@media (max-width: 768px) {
+
+  .dualCircleSlider{
+    padding: 16px 8px 24px;
+    border-radius: 14px;
+  }
+
+  .dcs-track{
+    gap: 18px;
+  }
+
+  .dcs-row{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 آیتم در هر ردیف */
+    gap: 16px 10px;
+    justify-items: center;
+  }
+
+  .dcs-item{
+    width: auto;
+  }
+
+  .dcs-item img{
+    width: 58px;
+    height: 58px;
+  }
+
+  .dcs-item span{
+    font-size: 10px;
+    line-height: 1.3;
+  }
+}
+
+.ei{
+  margin-bottom: 20px;
+  font-size: 13px;
+}
+.fot{
+        font-size: 12px;
+        color: #444;
+      }
+
+  .on{
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  .ti{
+    font-size: 13px;
+    color: #444;
+  }
+  /* والد لوگو و متن – کاملاً راست‌چین و ستونی */
+.dk-right {
+    display: flex;
+    flex-direction: column;   /* متن زیر لوگو */
+    align-items: flex-end;    /* راست‌چین کامل */
+    text-align: right;        /* متن راست‌چین */
+    width: fit-content;
+    gap: 6px;
+        margin-right:100px;
+
+}
+
+/* لوگو – راست‌چین واقعی */
+.dk-logo {
+    height: 45px;
+    display: block;
+        margin-right: 20px;
+
+    margin-left: auto;   /* ⭐ برای flex اصلی‌ترین روش راست‌چین */
+}
+
+/* متن‌ها زیر لوگو و کامل راست‌چین */
+.dk-info {
+    display: flex;
+    flex-direction: column;   /* ⭐ ستون شدن متن */
+    align-items: flex-end;    /* متن راست‌چین */
+    text-align: right;  
+    gap: 4px;
+    font-size: 14px;
+    color: #444;
+    margin-right: 20px;
+}
+.dk-col{
+      margin-right: 85px;
+
+}
+/* 📱 ریسپانسیو موبایل */
+@media (max-width: 768px) {
+      .service-item span {
+      font-size: 9px;
+      color: #333;
+      
+    }
+  .slider {
+    height: 33vh; /* ارتفاع کمتر برای موبایل */
+    margin-top: 5px;
+  }
+
+  .slider-btn {
+    font-size: 1.2rem;
+    padding: 6px 10px;
+  }
+
+  .prev { right: 10px; }
+  .next { left: 10px; }
+}
+
+/* 📱📱 موبایل‌های خیلی کوچک */
+@media (max-width: 480px) {
+  .slider {
+    height: 25vh;
+  }
+
+  .slider-btn {
+    font-size: 1rem;
+    padding: 5px 8px;
+  }
+
+        .note {
+      padding: 75px;
+      font-size: 15px;
+justify-self: center;
+      margin-left: 70px;
+margin-right: 70px;
+padding-top: 30px;
+padding-bottom: 0px;
+
+    }
+            .gallery{
+  padding: 0 20px;
+  margin: 15px;
+  justify-self: center;
+  padding-right: 10px;
+padding-left: 10px;
+}
+
+.gallery .item {
+  width: 400px;           /* اندازه عکس‌های ردیف اول */
+  height: 150px;
+  flex: 0 0 auto;
+  border-radius: 16px;
+
+}
+.gallery .item.smaller {
+  width: 400px;           /* اندازه عکس‌های ردیف دوم */
+  height: 160px;
+}
+
+
+.dk-social-wrap {text-align:center; margin-top:30px; font-size: 13px;}
+.dk-social a img {width:30px;margin:0 10px;}
+
+
+.dk-newsletter {margin-top:20px; font-size: 15px;}
+.dk-newsletter input {
+padding:10px;
+width:200px;
+border:1px solid #ccc;
+border-radius:5px;
+}
+.dk-newsletter button {
+padding:10px 20px;
+border:none;
+background:#ccc;
+border-radius:5px;
+cursor:pointer;
+}
+
+.fot{
+  font-size: 9px;
+}
+
+/* والد لوگو و متن – کاملاً راست‌چین و ستونی */
+.dk-right {
+    display: flex;
+    flex-direction: column;   /* متن زیر لوگو */
+    align-items: flex-end;    /* راست‌چین کامل */
+    text-align: center;        /* متن راست‌چین */
+    width: fit-content;
+    gap: 6px;
+  }
+
+
+/* لوگو – راست‌چین واقعی */
+.dk-logo {
+    height: 30px;
+    display: block;
+    margin-left: auto;   /* ⭐ برای flex اصلی‌ترین روش راست‌چین */
+}
+
+/* متن‌ها زیر لوگو و کامل راست‌چین */
+.dk-info {
+    display: flex;
+    flex-direction: column;   /* ⭐ ستون شدن متن */
+    align-items: flex-end;    /* متن راست‌چین */
+    text-align: right;  
+    gap: 4px;
+    font-size: 10px;
+    color: #444;
+}
+
+.dk-footer-copy {
+    text-align: center;
+    width: 100%;
+    padding: 20px 0;
+    font-size: 11px;
+    color: #444;
+justify-self: center;
+
+        direction: rtl;
+}
+
+.on{
+  font-size: 15px;
+  margin-bottom: 10px;
+}
+.ti{
+  font-size: 10px;
+}
+.ei{
+  font-size: 11px;
+}
+
+.dk-middle{
+  justify-self: center;
+  padding-left: 100px;
+}
+
+  /* 📌 اسلایدر */
+  .mainSlider {
+    height: 32vh;        /* کوچکتر و مناسب موبایل */
+
+  }
+
+  .slider-btn {
+    font-size: 1.1rem;
+    padding: 6px 10px;
+    top: 50%;
+  }
+
+  .prev { right: 10px; }
+  .next { left: 10px; }
+
+  .dots {
+    bottom: 6px;
+    gap: 6px;
+  }
+  .dot {
+    width: 8px;
+    height: 8px;
+  }
+}
+
+
+</style>
+</head>
+<body>
+    <div id="menuOverlayBg"></div>
+
+<header>
+  <div class="top-banner"></div>
+  <div class="nav">
+    <div class="nav-left">
+      <div class="logo">دیجی‌کالا</div>
+      <div class="search-box">
+        <input id="searchInput" type="text" placeholder="جستجو در دیجی‌کالا..." />
+        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7" stroke="#777" stroke-width="2" fill="none"/><line x1="16" y1="16" x2="21" y2="21" stroke="#777" stroke-width="2" stroke-linecap="round"/></svg>
+      </div>
+    </div>
+    <div class="nav-right">
+      <a href="./login.html" style="text-decoration: none; color: black;">
+        ورود | ثبت‌نام
+      </a>
+          <div class="divider"></div>
+      <div class="cart">🛒</div>
+    </div>
+  </div>
+
+  <div class="menu-bar">
+    <div class="menu-items">
+      <!-- ✅ منوی دسته‌بندی با پنجره بازشونده -->
+      <div class="menu-item">
+        <div id="menuOverlay">
+        دسته‌بندی کالاها
+        <div class="mega-menu">
+          <div class="mega-column">
+            <h4>موبایل</h4>
+            <ul>
+              <li><a href="#">گوشی اپل</a></li>
+              <li><a href="#">گوشی سامسونگ</a></li>
+              <li><a href="#">گوشی شیائومی</a></li>
+              <li><a href="#">گوشی پوکو</a></li>
+              <li><a href="#">گوشی آنر</a></li>
+              <li><a href="#">گوشی ردتون</a></li>
+              <li><a href="#">گوشی نوکیا</a></li>
+              <li><a href="#">گوشی سایفر</a></li>           
+              <li><a href="#">گوشی داریا</a></li>
+              <li><a href="#">گوشی جی ال ایکس</a></li>
+              <li><a href="#">گوشی هواوی</a></li>
+              <li><a href="#">گوشی تی سی ال</a></li>
+              <li><a href="#">گوشی وکال</a></li>
+              <li><a href="#">گوشی بلک ویو</a></li>
+              <li><a href="#">گوشی ریلمی</a></li>
+            </ul>
+          </div>
+          <div class="mega-column">
+            <h4>لپ‌تاپ و کامپیوتر</h4>
+            <ul>
+              <li><a href="#">لپ‌تاپ ایسوس</a></li>
+              <li><a href="#">لپ‌تاپ لنوو</a></li>
+              <li><a href="#">لپ‌تاپ msi</a></li>
+              <li><a href="#">لپ‌تاپ hp</a></li>
+              <li><a href="#">لپ‌تاپ acer</a></li>
+              <li><a href="#">لپ‌تاپ لنوو</a></li>
+              <li><a href="#">ماوس </a></li>
+              <li><a href="#">مانیتور</a></li>
+              <li><a href="#">کیبورد </a></li>
+              <li><a href="#">اسپیکر</a></li>
+              <li><a href="#">پرینتر hp</a></li>
+              <li><a href="#">فلش</a></li>
+              <li><a href="#">هارد</a></li>
+
+            </ul>
+          </div>
+          <div class="mega-column">
+            <h4>خانه و آشپزخانه</h4>
+            <ul>
+              <li><a href="#">یخچال</a></li>
+              <li><a href="#">ماشین لباسشویی</a></li>
+              <li><a href="#">اجاق گاز</a></li>
+              <li><a href="#">مایکروویو</a></li>
+              <li><a href="#">ماشین ظرفشویی</a></li>
+              <li><a href="#">فر</a></li>
+              <li><a href="#">هود</a></li>
+              <li><a href="#">مایکروویو</a></li>
+              <li><a href="#">هواپز</a></li>
+              <li><a href="#">زودپز</a></li>
+              <li><a href="#">سرویس قابلمه</a></li>
+              <li><a href="#">ساندویچ ساز</a></li>
+            </ul>
+          </div>
+          <div class="mega-column">
+            <h4>زیبایی و سلامت</h4>
+            <ul>
+              <li><a href="#">عطر جیبی</a></li>
+              <li><a href="#"> رژلب</a></li>
+              <li><a href="#">مراقبت پوست</a></li>
+              <li><a href="#">کرم پودر</a></li>
+              <li><a href="#">شامپو مو</a></li>
+              <li><a href="#">نرم کننده مو</a></li>
+              <li><a href="#">بادی اسپلش</a></li>
+              <li><a href="#">تونر</a></li>
+              <li><a href="#">ضد آفتاب</a></li>
+              <li><a href="#">کرم مرطوب کننده</a></li>
+              <li><a href="#"> ماسک صورت و بدن</a></li>
+              <li><a href="#">مسواک</a></li>
+              <li><a href="#">خمیر دندان</a></li>
+              <li><a href="#">مراقبت صورت و بدن</a></li>
+              <li><a href="#">پاک کننده صورت</a></li>
+              <li><a href="#">پنکک</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+<a href="./pishnahad.html" class="menu-item">شگفت‌انگیزها</a>
+<a href="supermarket.html" class="menu-item">سوپرمارکت</a>
+<a href="tala.html" class="menu-item">طلای دیجیتال</a>
+<a href="porfrosh.html" class="menu-item">پرفروش‌ترین‌ها</a>
+<a href="indigikala.html" class="menu-item">در دیجی‌کالا بفروشید!</a>
+
+    </div>
+
+    <div class="location-box">
+      <span>ارسال به گلستان، علی‌آباد کتول</span>
+    </div>
+  </div>
+</header>
+
+<!-- 🔻 اسلایدر -->
+
+<div class="slider">
+  <div class="slide active" style="background-image:url('./سوپر.gif');"></div>
+  <div class="slide" style="background-image:url('./قهوه.webp');"></div>
+  <div class="slide" style="background-image:url('چای');"></div>
+  <div class="slide" style="background-image:url('./روغن.gif');"></div>
+  <button class="slider-btn prev">❮</button>
+  <button class="slider-btn next">❯</button>
+  <div class="dots">
+    <div class="dot active"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div>
+  </div>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+  const slider = document.querySelector(".mainSlider");
+  if (!slider) return;
+
+  const slides = slider.querySelectorAll(".main-slide");
+  const dots   = slider.querySelectorAll(".main-dot");
+  const nextBtn = slider.querySelector(".main-slider-btn.next");
+  const prevBtn = slider.querySelector(".main-slider-btn.prev");
+
+  let current = 0;
+  let timer;
+
+  function showSlide(i){
+    slides.forEach((s,idx)=>s.classList.toggle("active", idx===i));
+    dots.forEach((d,idx)=>d.classList.toggle("active", idx===i));
+  }
+
+  function nextSlide(){
+    current = (current + 1) % slides.length;
+    showSlide(current);
+  }
+
+  function prevSlide(){
+    current = (current - 1 + slides.length) % slides.length;
+    showSlide(current);
+  }
+
+  function startAuto(){
+    timer = setInterval(nextSlide, 5000);
+  }
+
+  function resetAuto(){
+    clearInterval(timer);
+    startAuto();
+  }
+
+  nextBtn.onclick = ()=>{ nextSlide(); resetAuto(); };
+  prevBtn.onclick = ()=>{ prevSlide(); resetAuto(); };
+
+  dots.forEach((dot,i)=>{
+    dot.onclick = ()=>{
+      current = i;
+      showSlide(current);
+      resetAuto();
+    };
+  });
+
+  showSlide(0);
+  startAuto();
+
+});
+</script>
+
+
+<!-- Amazing Slider -->
+<section class="dk-amazing-wrapper">
+
+
+  <div class="dk-amazing">
+<div class="amz-header">
+  <div class="amz-title-wrapper">
+    <span class="amz-title">حراج</span>
+    <span class="amz-title">سوپر</span>
+    <span class="amz-title">مارکت</span>
+  </div>
+    <div class="amz-image">
+    <img src="./سوپری.webp" alt="Amazing Offer">
+  </div>
+</div>
+
+
+
+    <button class="dk-btn dk-prev">‹</button>
+
+    <div class="dk-slider-box">
+      <div class="dk-slider">
+
+        <!-- CARD 1 -->
+        <div class="dk-card" data-time="86400">
+          <span class="dk-discount">25٪</span>
+          <img src="./سفیدکننده.webp">
+          <p class="dk-title">سفیدکننده سطوح</p>
+          <div class="dk-price">
+            <del>1,980,000</del>
+            <span>1,490,000 تومان</span>
+          </div>
+        </div>
+
+        <!-- CARD 2 -->
+        <div class="dk-card" data-time="86400">
+          <span class="dk-discount">15٪</span>
+          <img src="./مایع لباس.webp">
+          <p class="dk-title">مایع لباسشویی</p>
+          <div class="dk-price">
+            <del>95,800,000</del>
+            <span>81,499,000 تومان</span>
+          </div>
+        </div>
+
+        <!-- CARD 3 -->
+        <div class="dk-card" data-time="86400">
+          <span class="dk-discount">12٪</span>
+          <img src="./ماستپرچرب.webp">
+          <p class="dk-title">ماست پرچرب</p>
+          <div class="dk-price">
+            <del>3,650,000</del>
+            <span>3,200,000 تومان</span>
+          </div>
+        </div>
+
+        <!-- CARD 4 -->
+        <div class="dk-card" data-time="86400">
+          <span class="dk-discount">30٪</span>
+          <img src="./پودر.webp">
+          <p class="dk-title">پودر ماشین لباسشویی</p>
+          <div class="dk-price">
+            <del>4,000,000</del>
+            <span>2,800,000 تومان</span>
+          </div>
+        </div>
+
+        <!-- CARD 5 -->
+        <div class="dk-card" data-time="86400">
+          <span class="dk-discount">18٪</span>
+          <img src="./شیرپرچرب.webp">
+          <p class="dk-title">شیر پرچرب</p>
+          <div class="dk-price">
+            <del>6,200,000</del>
+            <span>5,100,000 تومان</span>
+          </div>
+        </div>
+
+        <!-- CARD 6 -->
+        <div class="dk-card" data-time="86400">
+          <span class="dk-discount">20٪</span>
+          <img src="./پودرهاتچاکلت.webp">
+          <p class="dk-title">پودر هات چاکلت</p>
+          <div class="dk-price">
+            <del>1,250,000</del>
+            <span>999,000 تومان</span>
+          </div>
+        </div>
+
+        <!-- CARD 7 -->
+        <div class="dk-card" data-time="86400">
+          <span class="dk-discount">10٪</span>
+          <img src="./خامه.webp">
+          <p class="dk-title">خامه</p>
+          <div class="dk-price">
+            <del>3,400,000</del>
+            <span>3,060,000 تومان</span>
+          </div>
+        </div>
+
+        <!-- CARD 8 -->
+        <div class="dk-card" data-time="86400">
+          <span class="dk-discount">22٪</span>
+          <img src="./اندرژیزا.webp">
+          <p class="dk-title">انرژی زا</p>
+          <div class="dk-price">
+            <del>2,100,000</del>
+            <span>1,640,000 تومان</span>
+          </div>
+        </div>
+
+        <!-- CARD 9 -->
+        <div class="dk-card" data-time="86400">
+          <span class="dk-discount">35٪</span>
+          <img src="./کشک.webp">
+          <p class="dk-title">کشک</p>
+          <div class="dk-price">
+            <del>2,000,000</del>
+            <span>1,300,000 تومان</span>
+          </div>
+        </div>
+
+        <!-- CARD 10 -->
+        <div class="dk-card" data-time="86400">
+          <span class="dk-discount">28٪</span>
+          <img src="./پنیر.webp">
+          <p class="dk-title">پنیر پیتزا</p>
+          <div class="dk-price">
+            <del>1,100,000</del>
+            <span>790,000 تومان</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <button class="dk-btn dk-next">›</button>
+
+  </div>
+</section>
+
+
+<!-- /Amazing Slider -->
+
+<style>
+.center-text {
+  text-align: center;
+}
+</style>
+
+<p class="center-text">خرید بر اساس دسته‌بندی</p>
+
+<!-- 🔵 اسلایدر دو ردیفه دایره‌ای -->
+<!-- dual-circle-slider - HTML -->
+<div class="dualCircleSlider">
+
+  <!-- دکمه قبلی -->
+
+  <!-- محدوده دید (درش overflow:hidden است) -->
+  <div class="dcs-view" aria-hidden="false">
+
+    <!-- ترک حاوی دو ردیف -->
+    <div class="dcs-track">
+
+      <!-- ردیف بالا (10 آیتم) -->
+      <div class="dcs-row dcs-row-top">
+        <a href="#" class="dcs-item"><img src="./تنقلات.png" alt=""><span>تنقلات</span></a>
+        <a href="#" class="dcs-item"><img src="./کالاهایاساسیوخواروبار.png" alt=""><span>کالاهای اساسی و خواروبار </span></a>
+        <a href="#" class="dcs-item"><img src="./افزودنیها.png" alt=""><span>افزودنی ها </span></a>
+        <a href="#" class="dcs-item"><img src="./بهداشتخانگی.png" alt=""><span> بهداشت خانگی </span></a>
+        <a href="#" class="dcs-item"><img src="./بهداشتشخصی.png" alt=""><span>بهداشت شخصی  </span></a>
+        <a href="#" class="dcs-item"><img src="./شوروترشیجات.png" alt=""><span> شور و ترشیجات </span></a>
+                <a href="#" class="dcs-item"><img src="./خشکباروشیرینی.png" alt=""><span>  خشکبار و شیرینی </span></a>
+
+
+      </div>
+
+      <!-- ردیف پایین (10 آیتم) -->
+      <div class="dcs-row dcs-row-bottom">
+        <a href="#" class="dcs-item"><img src="./موادپروتئینیوتخممرغ.png" alt=""><span> مواد پروتئینی و تخم مرغ</span></a>
+        <a href="#" class="dcs-item"><img src="./کنسرووغذایاماده.png" alt=""><span>کنسرو و غذای آماده </span></a>
+        <a href="#" class="dcs-item"><img src="./مادروکودک.png" alt=""><span> مادر و کودک </span></a>
+        <a href="#" class="dcs-item"><img src="./نوشیدنیگ.png" alt=""><span> نوشیدنی های گرم</span></a>
+        <a href="#" class="dcs-item"><img src="./نوشیدنیس.png" alt=""><span>  نوشیدنی های سرد </span></a>
+        <a href="#" class="dcs-item"><img src="./میوهوسبزیجات.png" alt=""><span>میوه و سبزیجات  </span></a>
+                        <a href="#" class="dcs-item"><img src="./سایر.png" alt=""><span>  سایر </span></a>
+
+
+      </div>
+
+    </div>
+  </div>
+
+  <!-- دکمه بعدی -->
+</div>
+
+<br>
+<br>
+
+
+<hr style="border: 0; border-top: 1.5px solid #e4e3e3;margin-bottom: 2.5px;">
+<br>
+<br>
+<div class="dk-right">
+    <img src="./{CC655B16-4F73-4724-980E-71CC6B9BCF70}.png" class="dk-logo" alt="دیجی‌کالا">
+<br>
+    <div class="dk-info">
+        <span>تلفن پشتیبانی ۶۱۹۳۰۰۰۰ - ۰۲۱       |       ۰۲۱-۹۱۰۰۰۱۰۰       |        7 روز هفته، 24 ساعته پاسخگوی شما هستیم  </span>
+      
+    </div>
+</div>
+
+
+<!-- HTML -->
+<footer class="dk-footer">
+<div class="dk-top">
+<div class="dk-item">
+<img src="./z.svg" class="dk-icon" alt="اصالت کالا">
+<div class="fot">ضمانت اصل بودن کالا</div>
+</div>
+<div class="dk-item">
+<img src="7z.svg" class="dk-icon" alt="7 روز بازگشت">
+<div class="fot">هفت روز ضمانت بازگشت کالا</div>
+</div>
+<div class="dk-item">
+<img src="./7.svg" class="dk-icon" alt="پشتیبانی 24 ساعته">
+<div class="fot">7 روز هفته، 24 ساعته پاسخگوی شما هستیم</div>
+</div>
+<div class="dk-item">
+<img src="./par.svg" class="dk-icon" alt="پرداخت در محل">
+<div class="fot">امکان پرداخت در محل</div>
+</div>
+<div class="dk-item">
+<img src="./ex.svg" class="dk-icon" alt="تحویل اکسپرس">
+<div class="fot">امکان تحویل اکسپرس</div>
+</div>
+</div>
+<br>
+
+<div class="dk-middle">
+<div class="dk-col">
+<div class="on">راهنمای خرید از دیجی‌کالا</div>
+<div class="ti" href="#">نحوه ثبت سفارش</div>
+<div class="ti" href="#">رویه ارسال سفارش</div>
+<div class="ti" href="#">شیوه‌های پرداخت</div>
+</div>
+
+
+<div class="dk-col">
+<div class="on">خدمات مشتریان</div>
+<div class="ti" href="#">پاسخ به پرسش‌های متداول</div>
+<div class="ti" href="#">رویه‌های بازگرداندن کالا</div>
+<div class="ti" href="#">شرایط استفاده</div>
+<div class="ti" href="#">حریم خصوصی</div>
+<div class="ti" href="#">گزارش باگ</div>
+</div>
+
+
+<div class="dk-col">
+<div class="on">با دیجی‌کالا</div>
+<div class="ti" href="#">اتاق خبر دیجی‌کالا</div>
+<div class="ti" href="#">فروش در دیجی‌کالا</div>
+<div class="ti" href="#">فرصت‌های شغلی</div>
+<div class="ti" href="#">گزارش تخلف در دیجی‌کالا</div>
+<div class="ti" href="#">تماس با دیجی‌کالا</div>
+<div class="ti" href="#">درباره دیجی‌کالا</div>
+</div>
+</div>
+<br> 
+
+<div class="dk-social-wrap">
+<h4>همراه ما باشید!</h4>
+
+
+
+<form class="dk-newsletter">
+<div class="ei">با ثبت ایمیل، از جدیدترین تخفیف‌ها باخبر شوید</div>
+<input type="email" placeholder="ایمیل شما">
+<button type="submit">ثبت</button>
+</form>
+</div>
+</footer>
+
+
+
+<div class="dk-footer-copy">
+    برای استفاده از مطالب دیجی‌کالا، داشتن «هدف غیرتجاری» و ذکر «منبع» کافیست. 
+    تمام حقوق اين وب‌سايت نیز برای شرکت نوآوران فن آوازه (فروشگاه آنلاین دیجی‌کالا) است.
+</div>
+
+
+</a>
+
+<script>
+/* SLIDER */
+(() => {
+  const slider = document.querySelector('.dk-slider');
+  const next = document.querySelector('.dk-next');
+  const prev = document.querySelector('.dk-prev');
+  let index = 0;
+  const step = 214;
+
+  next.onclick = () => {
+    if (index < 6) {
+      index++;
+      slider.style.transform = `translateX(${index * step}px)`;
+    }
+  };
+
+  prev.onclick = () => {
+    if (index > 0) {
+      index--;
+      slider.style.transform = `translateX(${index * step}px)`;
+    }
+  };
+})();
+ // 🔹 تایمر اصلی زیر عنوان پیشنهاد شگفت انگیز
+  (function() {
+    let time = 24 * 3600; // 24 ساعت به ثانیه
+    const timer = document.getElementById('amzTimer'); // مطمئن شدیم id درست باشد
+
+    function updateTimer() {
+      let h = String(Math.floor(time / 3600)).padStart(2, '0');
+      let m = String(Math.floor((time % 3600) / 60)).padStart(2, '0');
+      let s = String(time % 60).padStart(2, '0');
+      timer.innerText = `${h}:${m}:${s}`;
+    }
+
+    updateTimer(); // نمایش اولیه
+
+    const interval = setInterval(() => {
+      if (time <= 0) {
+        clearInterval(interval); // وقتی تایمر به صفر رسید، متوقف شود
+      } else {
+        time--;
+        updateTimer();
+      }
+    }, 1000);
+  })();
+
+  
+
+// Dual-circle slider (RTL — حرکت به چپ برای "بعدی")
+// Dual-circle slider RTL
+(function(){
+  const track = document.querySelector(".dcs-track");
+  const rows = document.querySelectorAll(".dcs-row");
+  const view = document.querySelector(".dcs-view");
+  const btnPrev = document.querySelector(".dcs-prev");
+  const btnNext = document.querySelector(".dcs-next");
+
+  if (!track || rows.length === 0 || !view || !btnPrev || !btnNext) return;
+
+  let index = 0;
+  let step = 1;
+  let visibleCount = 1;
+  let maxIndex = 0;
+
+  function calculateSizes(){
+    const first = rows[0].children[0];
+    const second = rows[0].children[1];
+    if (!first) return;
+
+    const firstRect = first.getBoundingClientRect();
+    let stride = firstRect.width;
+
+    if(second){
+      const secondRect = second.getBoundingClientRect();
+      stride += Math.max(0, secondRect.left - (firstRect.left + firstRect.width));
+    } else {
+      stride += parseFloat(getComputedStyle(first).marginRight) || 18;
+    }
+
+    step = Math.round(stride);
+    visibleCount = Math.floor(view.clientWidth / step) || 1;
+    maxIndex = Math.max(0, rows[0].children.length - visibleCount);
+
+    // تنظیم index در صورت بزرگ بودن از max
+    if(index > maxIndex) index = maxIndex;
+  }
+
+  function update(){
+    // برای RTL: حرکت "بعدی" یعنی کم کردن ترنسلیت
+    const moveX = index * step;
+    track.style.transform = `translateX(${moveX}px)`;
+
+    btnPrev.disabled = index === 0;
+    btnNext.disabled = index >= maxIndex;
+  }
+
+  btnNext.addEventListener("click", () => {
+    if(index < maxIndex){
+      index++;
+      update();
+    }
+  });
+
+  btnPrev.addEventListener("click", () => {
+    if(index > 0){
+      index--;
+      update();
+    }
+  });
+
+  calculateSizes();
+  update();
+
+  window.addEventListener("resize", () => {
+    calculateSizes();
+    update();
+  });
+
+})();
+
+
+dcsNext.addEventListener("click", () => {
+    currentPos -= step; // ⚠️ اینجا معکوس شد
+    if (currentPos < 0) currentPos = 0;
+    updateSlider();
+});
+
+
+dcsPrev.addEventListener("click", () => {
+    currentPos += step; // ⚠️ اینجا هم معکوس شد
+    if (currentPos > maxScroll) currentPos = maxScroll;
+    updateSlider();
+});
+const slides = document.querySelectorAll(".slide");
+const dots = document.querySelectorAll(".dot");
+const nextBtn = document.querySelector(".slider-btn.next");
+const prevBtn = document.querySelector(".slider-btn.prev");
+let currentSlide = 0;
+
+function showSlide(i){
+  slides.forEach((s,idx)=>s.classList.toggle("active", idx===i));
+  dots.forEach((d,idx)=>d.classList.toggle("active", idx===i));
+}
+
+nextBtn.onclick = ()=>{ currentSlide=(currentSlide+1)%slides.length; showSlide(currentSlide); };
+prevBtn.onclick = ()=>{ currentSlide=(currentSlide-1+slides.length)%slides.length; showSlide(currentSlide); };
+dots.forEach((d,i)=>d.onclick=()=>{ currentSlide=i; showSlide(currentSlide); });
+
+setInterval(()=>{ currentSlide=(currentSlide+1)%slides.length; showSlide(currentSlide); }, 5000);
+
+
+(() => {
+  const slides = document.querySelectorAll(".main-slide");
+  const dots = document.querySelectorAll(".main-dot");
+  const nextBtn = document.querySelector(".main-slider-btn.next");
+  const prevBtn = document.querySelector(".main-slider-btn.prev");
+
+  if(slides.length===0) return;
+
+  let currentSlide = 0;
+
+  function showSlide(i){
+    slides.forEach((s,idx)=>s.classList.toggle("active", idx===i));
+    dots.forEach((d,idx)=>d.classList.toggle("active", idx===i));
+  }
+
+  nextBtn?.addEventListener("click", ()=>{ 
+    currentSlide = (currentSlide + 1) % slides.length; 
+    showSlide(currentSlide); 
+  });
+  prevBtn?.addEventListener("click", ()=>{ 
+    currentSlide = (currentSlide - 1 + slides.length) % slides.length; 
+    showSlide(currentSlide); 
+  });
+  dots.forEach((d,i)=>d.addEventListener("click", ()=>{ 
+    currentSlide = i; 
+    showSlide(currentSlide); 
+  }));
+
+  showSlide(0);
+  setInterval(()=>{ 
+    currentSlide = (currentSlide + 1) % slides.length; 
+    showSlide(currentSlide); 
+  },5000);
+})();
+
+
+
+// Dual-circle slider (RTL — حرکت به چپ برای "بعدی")
+// Dual-circle slider RTL
+(function(){
+  const track = document.querySelector(".dcs-track");
+  const rows = document.querySelectorAll(".dcs-row");
+  const view = document.querySelector(".dcs-view");
+  const btnPrev = document.querySelector(".dcs-prev");
+  const btnNext = document.querySelector(".dcs-next");
+
+  if (!track || rows.length === 0 || !view || !btnPrev || !btnNext) return;
+
+  let index = 0;
+  let step = 1;
+  let visibleCount = 1;
+  let maxIndex = 0;
+
+  function calculateSizes(){
+    const first = rows[0].children[0];
+    const second = rows[0].children[1];
+    if (!first) return;
+
+    const firstRect = first.getBoundingClientRect();
+    let stride = firstRect.width;
+
+    if(second){
+      const secondRect = second.getBoundingClientRect();
+      stride += Math.max(0, secondRect.left - (firstRect.left + firstRect.width));
+    } else {
+      stride += parseFloat(getComputedStyle(first).marginRight) || 18;
+    }
+
+    step = Math.round(stride);
+    visibleCount = Math.floor(view.clientWidth / step) || 1;
+    maxIndex = Math.max(0, rows[0].children.length - visibleCount);
+
+    // تنظیم index در صورت بزرگ بودن از max
+    if(index > maxIndex) index = maxIndex;
+  }
+
+  function update(){
+    // برای RTL: حرکت "بعدی" یعنی کم کردن ترنسلیت
+    const moveX = index * step;
+    track.style.transform = `translateX(${moveX}px)`;
+
+    btnPrev.disabled = index === 0;
+    btnNext.disabled = index >= maxIndex;
+  }
+
+  btnNext.addEventListener("click", () => {
+    if(index < maxIndex){
+      index++;
+      update();
+    }
+  });
+
+  btnPrev.addEventListener("click", () => {
+    if(index > 0){
+      index--;
+      update();
+    }
+  });
+
+  calculateSizes();
+  update();
+
+  window.addEventListener("resize", () => {
+    calculateSizes();
+    update();
+  });
+
+})();
+
+
+dcsNext.addEventListener("click", () => {
+    currentPos -= step; // ⚠️ اینجا معکوس شد
+    if (currentPos < 0) currentPos = 0;
+    updateSlider();
+});
+
+dcsPrev.addEventListener("click", () => {
+    currentPos += step; // ⚠️ اینجا هم معکوس شد
+    if (currentPos > maxScroll) currentPos = maxScroll;
+    updateSlider();
+});
+
+
+</script>

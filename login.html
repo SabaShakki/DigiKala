@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ورود دیجی‌کالا</title>
+  <link rel="icon" type="image/x-icon" href="./digikala-logo-en.png">
+
+  <link href="https://v1.fontapi.ir/css/Shabnam" rel="stylesheet" type="text/css" />
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #fff;
+      font-family: 'Shabnam', sans-serif;
+      direction: rtl;
+    }
+
+    .container {
+      border: 1px solid #8d8a8a;
+      padding: 30px;
+      width: 350px;
+      text-align: right;
+      position: relative;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(165, 164, 164, 0.5);
+    }
+
+    .arrow {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      width: 60px;
+      height: 24px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-decoration: none;
+    }
+    .arrow svg {
+      width: 100%;
+      height: 100%;
+      fill: none;
+      stroke: rgba(119, 116, 116, 0.829);
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .logo {
+      width: 120px;
+      height: 50px;
+      margin: 20px auto;
+    }
+
+    h2 {
+      margin: 20px 0 10px 0;
+      font-size: 16px;
+      text-align: right;
+      color: #494848;
+    }
+
+    .input-group {
+      margin-top: 15px;
+      color: #635f5f;
+      font-size: 12px;
+    }
+
+    input[type="text"], input[type="email"], .login-btn {
+      width: 100%;
+      box-sizing: border-box;
+      border-radius: 4px;
+      font-size: 14px;
+      font-family: 'Shabnam', sans-serif;
+      color: #524f4f;
+    }
+
+    input[type="text"], input[type="email"] {
+      padding: 12px;
+      border: none;
+      outline: none;
+      background-color: #f1f1f1;
+      margin-top: 8px;
+    }
+
+    .login-btn {
+      display: block;
+      text-align: center;
+      padding: 12px;
+      background-color: #d3263d;
+      color: white;
+      text-decoration: none;
+      font-size: 14px;
+      margin-top: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s, transform 0.2s;
+    }
+    .login-btn:hover {
+      background-color: #da2f46;
+      transform: translateY(-1px);
+    }
+
+    .footer-text {
+      font-size: 12px;
+      margin-top: 20px;
+      line-height: 1.4;
+      text-align: center;
+    }
+
+    .footer-text a {
+      color: blue;
+      text-decoration: none;
+    }
+
+    .error {
+      color: red;
+      font-size: 12px;
+      margin-top: 5px;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- پیکان برگشت -->
+    <a href="index.html" class="arrow">
+      <svg viewBox="0 0 30 16" xmlns="http://www.w3.org/2000/svg">
+        <line x1="0" y1="8" x2="22" y2="8" stroke="black" stroke-width="2" stroke-linecap="round"/>
+        <polyline points="18,4 22,8 18,12" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+      </svg>
+    </a>
+
+    <!-- لوگو -->
+    <div class="logo">
+      <img src="./{CC655B16-4F73-4724-980E-71CC6B9BCF70}.png" alt="لوگوی دیجی‌کالا" style="width: 100%; height: 100%; object-fit: contain;">
+    </div>
+
+    <h2>ورود یا ثبت‌نام در دیجی‌کالا</h2>
+
+    <!-- فرم ورود -->
+    <div class="input-group">
+      <label for="contact">لطفا شماره تلفن یا ایمیل خود را وارد کنید</label>
+      <br><br>
+      <input type="text" id="contact" placeholder="شماره تلفن یا پست الکترونیک">
+      <div id="errorMsg" class="error">لطفا شماره تلفن یا ایمیل معتبر وارد کنید.</div>
+
+      <!-- دکمه لینک ورود با اعتبارسنجی -->
+      <a href="./index2.html" class="login-btn" onclick="return validateAndRedirect(event)">ورود به دیجی‌کالا</a>
+    </div>
+
+    <p class="footer-text">
+      ورود شما به معنای پذیرش 
+      <a href="#">شرایط دیجی‌کالا</a> و 
+      <a href="#">قوانین حریم خصوصی</a> است.
+    </p>
+  </div>
+
+  <script>
+    function validateAndRedirect(event) {
+      const contact = document.getElementById('contact').value.trim();
+      const errorMsg = document.getElementById('errorMsg');
+
+      // بررسی خالی بودن فیلد
+      if(contact === "") {
+        errorMsg.style.display = "block";
+        event.preventDefault();
+        return false;
+      }
+
+      // بررسی شماره تلفن یا ایمیل
+      const phoneRegex = /^[0-9۰-۹]{10,14}$/;
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+      if(!phoneRegex.test(contact) && !emailRegex.test(contact)) {
+        errorMsg.style.display = "block";
+        event.preventDefault();
+        return false;
+      }
+
+      // ورودی صحیح، اجازه هدایت
+      errorMsg.style.display = "none";
+      return true;
+    }
+  </script>
+</body>
+</html>
